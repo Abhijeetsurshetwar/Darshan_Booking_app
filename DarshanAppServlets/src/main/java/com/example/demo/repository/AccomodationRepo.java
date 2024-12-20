@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Accomodation;
 @Repository
-public interface AccomodationRepo extends JpaRepository< Accomodation, Integer> {
+public interface AccomodationRepo extends JpaRepository<Accomodation, Integer> {
 
 }
