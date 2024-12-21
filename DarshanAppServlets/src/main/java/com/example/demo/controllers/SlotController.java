@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Slot;
 import com.example.demo.services.SlotServices;
+
+import com.example.demo.services.SlotService;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SlotController {
 	@Autowired
 	SlotServices sser;
+	SlotService sser;
 	
 	@GetMapping("/getAllSlot")
 	public List<Slot> getSlots() {
