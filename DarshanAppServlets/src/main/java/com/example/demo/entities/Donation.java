@@ -14,20 +14,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "donation")
+public class Donation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UID")
-    private int uid;
+    @Column(name = "donid")
+    private int donid;
 
-    @Column(name = "Uname", nullable = false, unique = true)
-    private String uname;
+    @Column(name = "Purpose", nullable = false)
+    private String purpose;
 
-    @Column(name = "Password", nullable = false)
-    private String password;
+    @Column(name = "payid", nullable = false)
+    private int payid;
 
-    @Column(name = "Role", nullable = false)
-    private String role;
+    @Column(name = "did", nullable = false)
+    private int did; 
 }
