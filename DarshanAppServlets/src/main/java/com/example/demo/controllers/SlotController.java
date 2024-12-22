@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SlotController {
 	@Autowired
 	SlotServices sser;
-	SlotService sser;
+
 	
 	@GetMapping("/getAllSlot")
 	public List<Slot> getSlots() {
