@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Accomodation;
-import com.example.demo.repository.AccomodationRepo;
+import com.example.demo.repository.AccomodationRepositories;
 
 @Service
-public class AccomodationService {
+public class AccomodationServices {
 	@Autowired
-	AccomodationRepo accrepo;
+	AccomodationRepositories accrepo;
 	
 	public List<Accomodation> getallaccomodation(){
 		return accrepo.findAll();
