@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entities.Slot;
 import com.example.demo.services.SlotServices;
 
-import com.example.demo.services.SlotService;
 import org.springframework.web.bind.annotation.GetMapping;
 
 

@@ -42,25 +42,27 @@ public class Donation {
     @Column(name = "did", nullable = false)
     private int did; 
     
-    //Done taking instance of devotee to retrieve all without a foreign key
+//Need to review  
+    /*
+    //Done taking instance of devotee to retrieve all Donations of particular devotee
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
     private List<Donation> donations;
+    
+    //Done taking instance of donation to retrieve all Payments 
+    @OneToOne(mappedBy = "donation" , cascade = CascadeType.ALL)
+    private Donation donation;
+
+    */
+    
     
     //Done
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "did")
     private Devotee devotee;
 
-    //Done taking instance of donation to retrieve all without a foreign key
-    @OneToOne(mappedBy = "donation" , cascade = CascadeType.ALL)
-    private Donation donation;
+    //Done 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="payid" )
+    private Payment payment;
     
-    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
-    private List<Donation> donations;
-    
-    @ManyToOne
-    @JoinColumn(name = "DID", referencedColumnName = "DID")
-    private Devotee devotee;
-
-
 }
