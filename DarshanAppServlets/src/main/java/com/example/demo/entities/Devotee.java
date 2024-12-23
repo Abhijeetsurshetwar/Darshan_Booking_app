@@ -52,5 +52,8 @@ public class Devotee {
     //Done taking instance of Payments to retrieve all without a foreign key
     @OneToMany(mappedBy = "devotee" , cascade =CascadeType.ALL)
     private List<Payment> payments;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

@@ -11,6 +11,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -52,5 +55,8 @@ public class Donation {
     //Done taking instance of donation to retrieve all without a foreign key
     @OneToOne(mappedBy = "donation" , cascade = CascadeType.ALL)
     private Donation donation;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

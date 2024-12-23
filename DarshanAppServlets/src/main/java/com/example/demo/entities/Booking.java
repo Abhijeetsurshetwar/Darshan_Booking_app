@@ -62,5 +62,8 @@ public class Booking {
 	@ManyToOne
 	@JoinColumn(name = "SID")
 	private Slot slot; 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
