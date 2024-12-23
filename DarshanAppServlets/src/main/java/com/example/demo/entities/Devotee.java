@@ -1,10 +1,17 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,4 +43,18 @@ public class Devotee {
 
     @Column(name = "UID", nullable = false)
     private int uid; 
+    
+    @OneToOne
+    @JoinColumn(name = "UID", referencedColumnName = "UID")
+    private User user;
+    
+    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
+    private List<Booking> bookings;
+    
+    @ManyToOne
+    @JoinColumn(name = "DID", referencedColumnName = "DID")
+    private Devotee devotee;
+
+
+
 }
