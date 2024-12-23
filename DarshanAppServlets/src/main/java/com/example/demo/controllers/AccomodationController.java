@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Accomodation;
-import com.example.demo.services.AccomodationService;
+import com.example.demo.services.AccomodationServices;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class AccomodationController {
 	@Autowired
-	AccomodationService accser;
+	AccomodationServices accser;
 	
 	@GetMapping("/getaccc")
 	public List<Accomodation> getAccomodation(){
