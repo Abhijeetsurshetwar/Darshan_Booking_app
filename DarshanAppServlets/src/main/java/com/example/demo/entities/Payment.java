@@ -50,8 +50,8 @@ public class Payment {
 	@OneToMany(mappedBy = "payment", cascade = CascadeType.ALL)
 	private List<Booking> bookings;
 	
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="did")
+	
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
     private Donation donation;
     
     

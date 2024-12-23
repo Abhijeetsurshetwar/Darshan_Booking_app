@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.stereotype.Service;
 import com.example.demo.entities.Accomodation;
 import com.example.demo.repository.AccomodationRepositories;
@@ -18,6 +19,5 @@ public class AccomodationServices {
 		return accrepo.findAll();
 		
 	}
-
 }
 
