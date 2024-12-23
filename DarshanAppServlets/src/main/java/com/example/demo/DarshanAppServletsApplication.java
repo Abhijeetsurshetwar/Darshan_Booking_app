@@ -8,7 +8,9 @@ public class DarshanAppServletsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DarshanAppServletsApplication.class, args);
-
+		
+		
+		System.out.println("HEOLLLLLl");
 	}
 
 }
