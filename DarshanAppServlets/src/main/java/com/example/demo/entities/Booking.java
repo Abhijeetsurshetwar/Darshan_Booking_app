@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,8 +51,7 @@ public class Booking {
 	@Column(name = "BType")
 	String btype;
 
-<<<<<<< Updated upstream
-=======
+
 	@ManyToOne
 	@JoinColumn(name = "DID", referencedColumnName = "DID")
 	private Devotee devotee;
@@ -59,11 +60,9 @@ public class Booking {
 	@JoinColumn(name = "PayID", referencedColumnName = "PayID")
 	private Payment payment;
 
+
 	@ManyToOne
 	@JoinColumn(name = "SID")
 	private Slot slot; 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 }

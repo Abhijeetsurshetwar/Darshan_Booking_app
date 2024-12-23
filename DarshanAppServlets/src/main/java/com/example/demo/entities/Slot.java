@@ -1,7 +1,11 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,19 +25,12 @@ public class Slot {
 	char type;
 	int capacity;
 	
-<<<<<<< Updated upstream
-=======
+
 	
 	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
 	private List<Booking> bookings;
-<<<<<<< Updated upstream
-=======
 	
-
->>>>>>> Stashed changes
-	
-
-	
->>>>>>> Stashed changes
+	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
+	private List<Booking> bookings;
 
 }

@@ -1,20 +1,21 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-<<<<<<< Updated upstream
-=======
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,8 +41,6 @@ public class Donation {
 
     @Column(name = "did", nullable = false)
     private int did; 
-<<<<<<< Updated upstream
-=======
     
     //Done taking instance of devotee to retrieve all without a foreign key
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
@@ -55,8 +54,13 @@ public class Donation {
     //Done taking instance of donation to retrieve all without a foreign key
     @OneToOne(mappedBy = "donation" , cascade = CascadeType.ALL)
     private Donation donation;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+    
+    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
+    private List<Donation> donations;
+    
+    @ManyToOne
+    @JoinColumn(name = "DID", referencedColumnName = "DID")
+    private Devotee devotee;
+
+
 }
