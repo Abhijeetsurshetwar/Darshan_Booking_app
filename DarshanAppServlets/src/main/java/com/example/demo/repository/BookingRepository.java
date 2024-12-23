@@ -3,8 +3,9 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.Accomodation;
+import com.example.demo.entities.Booking;
+
 @Repository
-public interface AccomodationRepo extends JpaRepository<Accomodation, Integer> {
+public interface BookingRepository extends JpaRepository<Booking, Integer>{
 
 }
