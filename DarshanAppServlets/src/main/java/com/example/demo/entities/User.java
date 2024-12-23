@@ -30,4 +30,11 @@ public class User {
 
     @Column(name = "Role", nullable = false)
     private String role;
+<<<<<<< Updated upstream
+=======
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Devotee devotee;
+
+>>>>>>> Stashed changes
 }

@@ -21,5 +21,14 @@ public class Slot {
 	char type;
 	int capacity;
 	
+<<<<<<< Updated upstream
+=======
+	
+	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
+	private List<Booking> bookings;
+	
+
+	
+>>>>>>> Stashed changes
 
 }

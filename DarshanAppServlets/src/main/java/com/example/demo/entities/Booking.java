@@ -49,4 +49,18 @@ public class Booking {
 	@Column(name = "BType")
 	String btype;
 
+<<<<<<< Updated upstream
+=======
+	@ManyToOne
+	@JoinColumn(name = "DID", referencedColumnName = "DID")
+	private Devotee devotee;
+	
+	@ManyToOne
+	@JoinColumn(name = "PayID", referencedColumnName = "PayID")
+	private Payment payment;
+
+	@ManyToOne
+	@JoinColumn(name = "SID")
+	private Slot slot; 
+>>>>>>> Stashed changes
 }
