@@ -51,6 +51,7 @@ public class Booking {
 	@Column(name = "BType")
 	String btype;
 
+
 	@ManyToOne
 	@JoinColumn(name = "DID", referencedColumnName = "DID")
 	private Devotee devotee;
@@ -59,5 +60,9 @@ public class Booking {
 	@JoinColumn(name = "PayID", referencedColumnName = "PayID")
 	private Payment payment;
 
+
+	@ManyToOne
+	@JoinColumn(name = "SID")
+	private Slot slot; 
 
 }

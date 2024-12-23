@@ -25,10 +25,12 @@ public class Slot {
 	char type;
 	int capacity;
 	
+
 	
 	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
 	private List<Booking> bookings;
-
 	
+	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
+	private List<Booking> bookings;
 
 }

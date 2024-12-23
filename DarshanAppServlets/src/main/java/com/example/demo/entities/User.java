@@ -32,6 +32,11 @@ public class User {
 
     @Column(name = "Role", nullable = false)
     private String role;
+
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Devotee devotee;
+
     
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Devotee devotee;

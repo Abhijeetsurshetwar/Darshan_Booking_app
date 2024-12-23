@@ -43,6 +43,21 @@ public class Devotee {
 
     @Column(name = "UID", nullable = false)
     private int uid; 
+
+    
+    //Done
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "UID")
+    private User user;
+    
+    
+    //Done taking instance of donation to retrieve all without a foreign key
+    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
+    private List<Donation> donation;
+        
+    //Done taking instance of Payments to retrieve all without a foreign key
+    @OneToMany(mappedBy = "devotee" , cascade =CascadeType.ALL)
+    private List<Payment> payments;
     
     @OneToOne
     @JoinColumn(name = "UID", referencedColumnName = "UID")
