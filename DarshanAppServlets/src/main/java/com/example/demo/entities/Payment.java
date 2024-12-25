@@ -35,8 +35,6 @@ public class Payment {
 	@Column(name = "Type")
 	String type;
 	
-	@Column(name = "DID")
-	int did;
 	
 	@Column(name="amount")
 	double amount;

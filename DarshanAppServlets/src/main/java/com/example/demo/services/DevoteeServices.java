@@ -20,4 +20,7 @@ public class DevoteeServices {
         return devoteeRepository.findById(id).orElse(null);
     }
 
+    public Devotee insertDevotee(Devotee devotee) {
+    	return devoteeRepository.save(devotee);
+    }
 }
