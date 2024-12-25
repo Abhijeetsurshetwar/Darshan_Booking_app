@@ -10,16 +10,24 @@ import com.example.demo.repository.UserRepositories;
 public class UserServices {
 
     @Autowired
-    private UserRepositories userRepository;
+    private UserRepositories userrepo;
 
     // all Users
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userrepo.findAll();
     }
 
+    
+    public User insertuser(User user) {
+    	return userrepo.save(user);
+    }
     //  User by ID
     public User getUserById(int id) {
-        return userRepository.findById(id).orElse(null);
+        return userrepo.findById(id).orElse(null);
+    }
+    
+    public int getuid(String Uname) {
+    	return userrepo.getuid(Uname);
     }
 
 }

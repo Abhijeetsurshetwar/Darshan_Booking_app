@@ -42,10 +42,6 @@ public class Devotee {
 
     @Column(name = "Contactno", nullable = false, unique = true)
     private String contactNo;
-
-    @Column(name = "UID", nullable = false)
-    private int uid; 
-
     
     //Done
     @OneToOne(cascade = CascadeType.ALL)
@@ -57,12 +53,8 @@ public class Devotee {
     @JsonIgnoreProperties("devotee")
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
     private List<Donation> donation;
-//        
-//    //Done taking instance of Payments to retrieve all Payments
-//    @OneToMany(mappedBy = "devotee" , cascade =CascadeType.ALL)
-//    private List<Payment> payments;
-//   
-//  
+    
+
     
   //Done taking instance of Payments to retrieve all Bookings
     @JsonIgnoreProperties("devotee")
