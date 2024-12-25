@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.Devotee;
 import com.example.demo.services.DevoteeServices;
+import com.example.demo.services.UserServices;
 
 @RestController
 @RequestMapping("/devotees")
@@ -13,11 +14,22 @@ public class DevoteeController {
 
     @Autowired
     private DevoteeServices devoteeService;
+    
+    @Autowired
+    private UserServices userservices;
 
     // Get all Devotees
-    @GetMapping
+    @GetMapping("/getDevotees")
     public List<Devotee> getAllDevotees() {
         return devoteeService.getAllDevotees();
+    }
+    
+    @PostMapping("/insert")
+    public Devotee insertDevotee(@RequestBody Devotee devotee) {
+    	
+    	System.out.println(devotee);
+    	
+    	return devoteeService.insertDevotee(devotee);
     }
 
     // Get Devotee by ID
