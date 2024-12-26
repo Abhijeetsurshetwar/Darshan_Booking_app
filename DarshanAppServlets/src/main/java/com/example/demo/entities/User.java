@@ -36,3 +36,4 @@ public class User {
 //    private Devotee devotee;
 
 }
+}
