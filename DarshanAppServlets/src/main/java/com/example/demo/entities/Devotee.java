@@ -27,7 +27,6 @@ import lombok.NoArgsConstructor;
 public class Devotee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DID")
     private int did;
 
@@ -51,7 +50,7 @@ public class Devotee {
     
     //Done taking instance of donation to retrieve all Donations
     @JsonIgnoreProperties("devotee")
-    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "devotee", cascade = CascadeType.PERSIST)
     private List<Donation> donation;
     
 
@@ -61,5 +60,4 @@ public class Devotee {
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
     private List<Booking> bookings;
     
-}
 }
