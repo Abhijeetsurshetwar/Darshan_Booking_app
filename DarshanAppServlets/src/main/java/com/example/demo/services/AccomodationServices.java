@@ -19,5 +19,9 @@ public class AccomodationServices {
 		return accrepo.findAll();
 		
 	}
+
 }
+
+}
+
 

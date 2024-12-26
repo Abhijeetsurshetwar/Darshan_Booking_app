@@ -24,3 +24,6 @@ public class DevoteeServices {
     	return devoteeRepository.save(devotee);
     }
 }
+
+}
+

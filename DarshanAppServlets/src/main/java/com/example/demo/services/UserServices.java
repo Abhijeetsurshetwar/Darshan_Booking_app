@@ -29,5 +29,10 @@ public class UserServices {
     public int getuid(String Uname) {
     	return userrepo.getuid(Uname);
     }
+    public User validateUser(String uname, String password) {
+        // Use repository to find the user by username and password
+        return userrepo.findByUnameAndPassword(uname, password);
+    }
+
 
 }
