@@ -68,4 +68,3 @@ public class Booking {
 //	@Column(name = "PayID")
 //	String payid;
 }
-}
