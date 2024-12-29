@@ -27,20 +27,18 @@ public class UserServices {
     
     public void insertuser(User user) {
     	userrepo.save(user);
-//    	return userrepo.getuid(user.getUname());
     }
+
+    
     //  User by ID
     public User getUserById(int id) {
         return userrepo.findById(id).orElse(null);
     }
     
-//    public int getuid(String Uname) {
-//    	return userrepo.getuid(Uname);
-//    }
-    
-    public void insertDevotee(User u , Devotee d) {
-
-    	
+    // Use repository to find the user by username and password
+    public User validateUser(String uname, String password) {
+        return userrepo.findByUnameAndPassword(uname, password);
     }
+
 
 }
