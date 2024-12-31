@@ -33,12 +33,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
+    public User login(@RequestBody User user) {
         User loggedInUser = userService.validateUser(user.getUname(), user.getPassword());
         System.out.println(user.getUname());
         System.out.println(user.getPassword());
         if (loggedInUser != null) {
-            return loggedInUser.getRole(); 
+            return loggedInUser; 
         } else {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Credentials");
         }
