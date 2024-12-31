@@ -1,19 +1,17 @@
 package com.example.demo.entities;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
->>>>>>> Stashed changes
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,20 +39,18 @@ public class User {
     private String role;
 
     
-<<<<<<< Updated upstream
+
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Devotee devotee;
-=======
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Devotee devotee;
     
  
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-}
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Devotee devotee;
+
+
 }
