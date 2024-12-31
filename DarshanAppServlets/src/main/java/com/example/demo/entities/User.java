@@ -1,5 +1,11 @@
 package com.example.demo.entities;
 
+<<<<<<< Updated upstream
+=======
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+>>>>>>> Stashed changes
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +38,17 @@ public class User {
     private String role;
 
     
+<<<<<<< Updated upstream
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Devotee devotee;
+=======
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Devotee devotee;
+    
+ 
+
+>>>>>>> Stashed changes
 
 }
 }

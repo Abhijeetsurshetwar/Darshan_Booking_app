@@ -3,6 +3,8 @@ package com.example.demo.entities;
  
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -12,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -46,6 +49,7 @@ public class Devotee {
     //Done
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "UID")
+    @JsonBackReference
     private User user;
     
     
@@ -60,6 +64,9 @@ public class Devotee {
     @JsonIgnoreProperties("devotee")
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
     private List<Booking> bookings;
+    
+  
+    
     
 }
 }
