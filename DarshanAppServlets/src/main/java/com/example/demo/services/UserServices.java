@@ -40,11 +40,6 @@ public class UserServices {
         return userrepo.findByUnameAndPassword(uname, password);
     }
     
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-
 
 
 }

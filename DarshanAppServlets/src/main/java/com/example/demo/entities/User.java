@@ -47,10 +47,4 @@ public class User {
     private Devotee devotee;
     
  
-
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Devotee devotee;
-
-
 }
