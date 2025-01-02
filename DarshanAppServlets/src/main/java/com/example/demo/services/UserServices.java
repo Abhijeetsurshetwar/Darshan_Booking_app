@@ -29,5 +29,9 @@ public class UserServices {
     public int getuid(String Uname) {
     	return userrepo.getuid(Uname);
     }
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 
 }

@@ -7,32 +7,40 @@ const RegisterForm = () => {
     userId: '',
     password: '',
     confirmPassword: '',
+    age: '',
+    gender: '',
+    email: '',
+    contactNo: ''
   });
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // navigate('/login');
+    if(formData.password === formData.confirmPassword){
+
       const reqInfo ={
         method:"POST",
         headers:{"Content-Type" : "application/json"},
         body:JSON.stringify({
           uname  : formData.userId,
           password:formData.password,
-          role:"Devotee"
+          role:"Devotee",
+          age:formData.age,
+          gender:formData.gender,
+          email:formData.email,
+          contactNo:formData.contactNo
+          
         })
       }
-      fetch("http://localhost:8080/insertUser",reqInfo)
+      fetch("http://localhost:8080/insertDevotee",reqInfo)
       .then((res)=>{
-          console.log(res);
-          navigate('/login');
+        console.log(res);
+        navigate('/login');
       })
-    // }
-    // else{
-    //   navigate('/register');
-
-    // }
+    } else{
+      navigate('/RegisterForm')
+    }
   };  
 
   const handleChange = (e) => {
@@ -73,65 +81,96 @@ const RegisterForm = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
+          <div className="row mb-3">
+            <div className="col">
+              <label className="form-label">User ID</label>
+              <input
+                type="text"
+                name="userId"
+                value={formData.userId}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+
+            <div className="col">
+              <label className="form-label">Age</label>
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                min="1"
+                max="120"
+                className="form-control"
+                required
+              />
+            </div>
+          </div>
+
           <div className="mb-3">
-            <label
-              className="form-label"
-              style={{ fontSize: '0.875rem', color: '#78350f' }}
+            <label className="form-label">Gender</label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              className="form-select"
+              required
             >
-              User ID
-            </label>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Email</label>
             <input
-              type="text"
-              name="userId"
-              value={formData.userId}
+              type="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               className="form-control"
-              style={{
-                borderColor: '#fde68a',
-                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
-              }}
               required
             />
           </div>
 
           <div className="mb-3">
-            <label
-              className="form-label"
-              style={{ fontSize: '0.875rem', color: '#78350f' }}
-            >
-              Password
-            </label>
+            <label className="form-label">Contact Number</label>
+            <input
+              type="tel"
+              name="contactNo"
+              value={formData.contactNo}
+              onChange={handleChange}
+              pattern="[0-9]{10}"
+              title="Please enter a valid 10-digit phone number"
+              className="form-control"
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Password</label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               className="form-control"
-              style={{
-                borderColor: '#fde68a',
-                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
-              }}
               required
             />
           </div>
 
           <div className="mb-3">
-            <label
-              className="form-label"
-              style={{ fontSize: '0.875rem', color: '#78350f' }}
-            >
-              Confirm Password
-            </label>
+            <label className="form-label">Confirm Password</label>
             <input
               type="password"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
               className="form-control"
-              style={{
-                borderColor: '#fde68a',
-                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
-              }}
               required
             />
           </div>

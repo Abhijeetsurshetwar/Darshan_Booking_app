@@ -13,13 +13,12 @@ export default function LoginForm()  {
         method:'POST',
         headers:{'Content-Type' : 'application/json'},
         body:JSON.stringify({
-            userid : userId,
+            uname : userId,
             password:password
         })
       }
-
       fetch('http://localhost:8080/login',reqInfo)
-      .then((res)=>{console.log(res)})
+      .then((res)=>{console.log(res); return res.json()}).then((data)=>{console.log(data)})
     };
 
     return (
