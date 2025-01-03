@@ -8,15 +8,21 @@ const RegisterForm = () => {
     password: '',
     confirmPassword: '',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     age: '',
     gender: '',
     email: '',
     contactNo: ''
 =======
+=======
+>>>>>>> Stashed changes
     age:0,
     gender:'',
     contactNo:'',
     email:''
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   });
 
@@ -25,8 +31,11 @@ const RegisterForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if(formData.password === formData.confirmPassword){
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       const reqInfo ={
@@ -36,6 +45,7 @@ const RegisterForm = () => {
           uname  : formData.userName,
           password:formData.password,
           role:"Devotee",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           age:formData.age,
           gender:formData.gender,
@@ -58,6 +68,27 @@ const RegisterForm = () => {
       fetch("http://localhost:8080/devotees/insertDevotee",reqInfo)
       .then((res)=>{
           if(res.status === 200){
+=======
+          age : formData.age,
+          gender: formData.gender,
+          contactNo : formData.contactNo,
+          email : formData.email
+        })
+      }
+      fetch("http://localhost:8080/devotees/insertDevotee",reqInfo)
+      .then((res)=>{
+          if(res.status === 200){
+
+            navigate('/login');
+          }
+          else{
+            navigate('/RegisterForm');
+          }
+      })
+    // }
+    // else{
+    //   navigate('/register');
+>>>>>>> Stashed changes
 
             navigate('/login');
           }
@@ -88,6 +119,7 @@ const RegisterForm = () => {
         </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <form onSubmit={handleSubmit}>
           <div className="row mb-3">
             <div className="col">
@@ -97,6 +129,8 @@ const RegisterForm = () => {
                 name="userId"
                 value={formData.userId}
 =======
+=======
+>>>>>>> Stashed changes
         <form onSubmit={handleSubmit} className="mb-3">
           <div className="row g-3">
             <div className="col-md-6">
@@ -105,6 +139,9 @@ const RegisterForm = () => {
                 type="text"
                 name="userName"
                 value={formData.userName}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 onChange={handleChange}
                 className="form-control"
@@ -113,8 +150,13 @@ const RegisterForm = () => {
             </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div className="col">
               <label className="form-label">Age</label>
+=======
+            <div className="col-md-6">
+              <label className="form-label fw-semibold text-dark">Age</label>
+>>>>>>> Stashed changes
 =======
             <div className="col-md-6">
               <label className="form-label fw-semibold text-dark">Age</label>
@@ -134,7 +176,11 @@ const RegisterForm = () => {
 
           <div className="mb-3">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <label className="form-label">Gender</label>
+=======
+            <label className="form-label fw-semibold text-dark">Gender</label>
+>>>>>>> Stashed changes
 =======
             <label className="form-label fw-semibold text-dark">Gender</label>
 >>>>>>> Stashed changes
@@ -154,7 +200,11 @@ const RegisterForm = () => {
 
           <div className="mb-3">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <label className="form-label">Email</label>
+=======
+            <label className="form-label fw-semibold text-dark">Email</label>
+>>>>>>> Stashed changes
 =======
             <label className="form-label fw-semibold text-dark">Email</label>
 >>>>>>> Stashed changes
@@ -170,7 +220,11 @@ const RegisterForm = () => {
 
           <div className="mb-3">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <label className="form-label">Contact Number</label>
+=======
+            <label className="form-label fw-semibold text-dark">Contact Number</label>
+>>>>>>> Stashed changes
 =======
             <label className="form-label fw-semibold text-dark">Contact Number</label>
 >>>>>>> Stashed changes
@@ -188,7 +242,11 @@ const RegisterForm = () => {
 
           <div className="mb-3">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <label className="form-label">Password</label>
+=======
+            <label className="form-label fw-semibold text-dark">Password</label>
+>>>>>>> Stashed changes
 =======
             <label className="form-label fw-semibold text-dark">Password</label>
 >>>>>>> Stashed changes
@@ -204,7 +262,11 @@ const RegisterForm = () => {
 
           <div className="mb-3">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <label className="form-label">Confirm Password</label>
+=======
+            <label className="form-label fw-semibold text-dark">Confirm Password</label>
+>>>>>>> Stashed changes
 =======
             <label className="form-label fw-semibold text-dark">Confirm Password</label>
 >>>>>>> Stashed changes

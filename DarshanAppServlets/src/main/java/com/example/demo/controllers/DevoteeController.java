@@ -38,10 +38,17 @@ public class DevoteeController {
 
     
     @PostMapping("/insertDevotee")
+<<<<<<< Updated upstream
     public Devotee insertUser(@RequestBody HashMap<String, String> Mapu) {
     	
     	return devoteeService.insertDevotee(Mapu);
     	
+=======
+    public ResponseEntity<String> insertUser(@RequestBody HashMap<String, String> Mapu) {
+    	
+    	devoteeService.insertDevotee(Mapu);
+    	return ResponseEntity.status(HttpStatus.OK).body("Login Successfull");
+>>>>>>> Stashed changes
     }
 
     
