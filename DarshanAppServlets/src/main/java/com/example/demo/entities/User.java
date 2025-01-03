@@ -39,6 +39,7 @@ public class User {
     private String role;
 
     
+<<<<<<< Updated upstream
 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Devotee devotee;
@@ -48,6 +49,8 @@ public class User {
     @JsonManagedReference
     private Devotee devotee;
 
+=======
+>>>>>>> Stashed changes
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Devotee devotee;
