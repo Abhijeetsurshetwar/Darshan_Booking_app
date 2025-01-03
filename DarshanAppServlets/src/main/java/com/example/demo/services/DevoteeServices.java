@@ -20,13 +20,21 @@ public class DevoteeServices {
     @Autowired
     private DevoteeRepositories devoteeRepository;
 
-    
+
     public List<Devotee> getAllDevotees() {
         return devoteeRepository.findAll();
     }
+
     public Devotee getDevoteeById(int id) {
         return devoteeRepository.findById(id).orElse(null);
     }
+
+
+    public Devotee insertDevotee(Devotee devotee) {
+
+  
+    @Transactional
+    public Devotee insertDevotee(HashMap<String, String> Mapu) {
 
   
     @Transactional
@@ -50,6 +58,9 @@ public class DevoteeServices {
     	user.setDevotee(devotee);
     	
     	
+
+    	return devoteeRepository.save(devotee);
+
     	devoteeRepository.save(devotee);
     }
     

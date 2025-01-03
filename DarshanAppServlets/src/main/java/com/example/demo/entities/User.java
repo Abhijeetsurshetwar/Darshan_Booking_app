@@ -39,9 +39,21 @@ public class User {
     private String role;
 
     
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Devotee devotee;
+
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Devotee devotee;
+
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Devotee devotee;

@@ -39,7 +39,6 @@ public class UserServices {
     public User validateUser(String uname, String password) {
         return userrepo.findByUnameAndPassword(uname, password);
     }
-    
 
 
 }
