@@ -42,21 +42,10 @@ public class DevoteeController {
     public ResponseEntity<String> insertUser(@RequestBody HashMap<String, String> Mapu) {
     	
     	devoteeService.insertDevotee(Mapu);
-    	return ResponseEntity.status(HttpStatus.OK).body("Login Successfull");
+    	return ResponseEntity.status(HttpStatus.OK).body("Registration Sucessfull Successfull");
     }
 
     
-    @PutMapping("/updateProfile/{id}")
-    public ResponseEntity<Devotee> updateDevoteeProfile(@PathVariable int id, @RequestBody Devotee updatedDevotee) {
-        Devotee updatedProfile = devoteeService.updateDevotee(id, updatedDevotee);
-
-        if (updatedProfile != null) {
-            return ResponseEntity.ok(updatedProfile); 
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        		
-        }
-    }
+   
   
 }
