@@ -37,6 +37,7 @@ public class UserController {
         User loggedInUser = userService.validateUser(user.getUname(), user.getPassword());
         System.out.println(user.getUname());
         System.out.println(user.getPassword());
+//        System.out.println(loggedInUser);
         if (loggedInUser != null) {
             return loggedInUser; 
         } else {

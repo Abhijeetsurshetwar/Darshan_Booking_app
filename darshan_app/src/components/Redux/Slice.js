@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { // Corrected spelling
     userinfo: {
-        userName: "",
+        uname: "",
         password: "",
         confirmPassword: "",
         age: "",

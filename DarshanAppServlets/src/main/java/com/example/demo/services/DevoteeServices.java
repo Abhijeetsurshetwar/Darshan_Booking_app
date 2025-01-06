@@ -54,29 +54,5 @@ public class DevoteeServices {
     	devoteeRepository.save(devotee);
     }
     
-    @Transactional
-    public Devotee updateDevotee(int id, Devotee updatedDevotee) {
-    	 Devotee existingDevotee = devoteeRepository.findById(id).orElse(null);
-         if (existingDevotee != null) {
-            
-             existingDevotee.setAge(updatedDevotee.getAge());
-             existingDevotee.setGender(updatedDevotee.getGender());
-             existingDevotee.setEmail(updatedDevotee.getEmail());
-             existingDevotee.setContactNo(updatedDevotee.getContactNo());
-
-             if (updatedDevotee.getUser() != null) {
-                 User existingUser = existingDevotee.getUser();
-                 User updatedUser = updatedDevotee.getUser();
-
-                 existingUser.setUname(updatedUser.getUname());
-                 existingUser.setPassword(updatedUser.getPassword());
-                 existingUser.setRole(updatedUser.getRole());
-
-                 existingDevotee.setUser(existingUser);
-             }
-
-             return devoteeRepository.save(existingDevotee);
-         } 
-         return null;
-    }
+   
 }
