@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\CDAC\Project\Darshan_Booking_app\DarshanAppServlets"/>
 			<item value="C:\Users\Sharyu Malshette\Documents\GitHub\Darshan_Booking_app\DarshanAppServlets"/>
 		</list>
 		<list key="projectNameTemplate">
