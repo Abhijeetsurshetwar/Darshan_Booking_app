@@ -8,7 +8,8 @@ const initialState = { // Corrected spelling
         age: "",
         gender: "",
         email: "",
-        contactNo: ""
+        contactNo: "",
+        did:""
     },
     logginstate: {
         loggedstatus: false
