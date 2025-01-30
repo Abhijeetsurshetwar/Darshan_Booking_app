@@ -1,9 +1,8 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import jakarta.persistence.CascadeType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,10 +37,6 @@ public class User {
     @Column(name = "Role", nullable = false)
     private String role;
 
-    
-
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//    private Devotee devotee;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Devotee devotee;

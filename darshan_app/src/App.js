@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import HomePage from './components/Pages/HomePage';
+
 import Sidebar from './components/AdminDashboard/componants/Sidebar';
 import Dashboard from './components/AdminDashboard/pages/Dashboard';
 import Booking from './components/AdminDashboard/pages/Booking';
@@ -18,13 +19,25 @@ function App() {
    
       <Routes>
         {/* User Routes */}
+
+import Navbar from './components/Navbar';
+
+
+function App() {
+  return (
+
+      
+      <Routes>
+
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/" element={<Navigate to="/login" />} />
 
+
         {/* Admin Routes */}
         <Route path="/admin/*" element={<AdminLayout />} />
+
       </Routes>
     
   );

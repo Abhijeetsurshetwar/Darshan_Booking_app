@@ -20,13 +20,15 @@ public class DevoteeServices {
     @Autowired
     private DevoteeRepositories devoteeRepository;
 
-    
+
     public List<Devotee> getAllDevotees() {
         return devoteeRepository.findAll();
     }
+
     public Devotee getDevoteeById(int id) {
         return devoteeRepository.findById(id).orElse(null);
     }
+
 
   
     @Transactional
@@ -49,9 +51,8 @@ public class DevoteeServices {
     	
     	user.setDevotee(devotee);
     	
-    	
     	devoteeRepository.save(devotee);
     }
     
-    
+   
 }
