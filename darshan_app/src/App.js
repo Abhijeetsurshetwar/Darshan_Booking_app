@@ -10,7 +10,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
 
-      <Router>
+    <Router>
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
