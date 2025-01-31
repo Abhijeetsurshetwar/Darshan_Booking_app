@@ -3,6 +3,7 @@ package com.example.demo.services;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,5 +35,21 @@ public class AccomodationServices {
 		System.out.println(newAcc);
 		Accomodation result = accrepo.save(newAcc);		
 		return result;
+	}
+	
+	@Transactional
+	public void deleteAccomodation(HashMap<String,String> accomodation) {
+		int id = Integer.parseInt(accomodation.get("AID"));
+		
+		
+		Optional<Accomodation> value = accrepo.findById(id);
+		Accomodation  accomodation1=null;
+		if (value.isPresent()) {
+		    accomodation1 = value.get();
+		    
+		}
+		System.out.println(accomodation1);
+		accrepo.deleteById(id);
+		
 	}
 }

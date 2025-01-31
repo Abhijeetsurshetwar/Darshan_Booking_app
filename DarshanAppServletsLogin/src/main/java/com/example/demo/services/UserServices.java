@@ -23,6 +23,12 @@ public class UserServices {
     public List<User> getAllUsers() {
         return userrepo.findAll();
     }
+
+    
+    public void insertuser(User user) {
+    	userrepo.save(user);
+    }
+
     
     //  User by ID
     public User getUserById(int id) {
