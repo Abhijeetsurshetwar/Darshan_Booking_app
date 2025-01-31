@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entities.Accomodation;
 import com.example.demo.services.AccomodationServices;
 
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +46,14 @@ public class AccomodationController {
 	
 	@PostMapping("/insert-accomodation")
 	public ResponseEntity<Accomodation> insertAccomodation(@RequestBody HashMap<String,String> newAccomodation) {
-		
-		System.out.println(newAccomodation.get("Name"));
-		System.out.println(newAccomodation.get("address"));
-
+	
 		Accomodation res =  accser.insertAccomodation(newAccomodation);
 		return new ResponseEntity<Accomodation>(res, HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping("/delete-accomodation")
+	public ResponseEntity<Accomodation> deleteAccomodation(@RequestBody HashMap<String,String> delAccomodation){
+			accser.deleteAccomodation(delAccomodation);
+		return new ResponseEntity<Accomodation>(HttpStatus.OK);
 	}
 }

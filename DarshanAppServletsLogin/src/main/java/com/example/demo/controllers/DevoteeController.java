@@ -34,6 +34,18 @@ public class DevoteeController {
     @GetMapping("/{id}")
     public Devotee getDevoteeById(@PathVariable int id) {
         return devoteeService.getDevoteeById(id);
-    } 
-     
+    }
+
+
+    
+    @PostMapping("/insertDevotee")
+    public ResponseEntity<String> insertUser(@RequestBody HashMap<String, String> Mapu) {
+    	
+    	devoteeService.insertDevotee(Mapu);
+    	return ResponseEntity.status(HttpStatus.OK).body("Registration Sucessfull Successfull");
+    }
+
+    
+   
+  
 }
