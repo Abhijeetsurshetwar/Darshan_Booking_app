@@ -32,7 +32,7 @@ const RegisterForm = () => {
         }),
       };
 
-      fetch("http://localhost:8080/devotees/insertDevotee", reqInfo)
+      fetch("http://localhost:8061/devotees/insertDevotee", reqInfo)
         .then((res) => {
           if (res.status === 200) {
             navigate("/login");
