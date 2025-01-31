@@ -27,7 +27,7 @@ export default function LoginForm() {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/login', reqInfo);
+            const response = await fetch('http://localhost:8061/login', reqInfo);
 
              if (!response.ok) {
                 throw new Error('Invalid credentials or server error.');
@@ -35,10 +35,17 @@ export default function LoginForm() {
 
             const data = await response.json();
 
-             if (data?.uname) {
+            if (data?.uname && data?.role) {  
                 console.log(data);
                 dispatch(Login(data));  
-                navigate('/home');  
+                if (data.role === 'Admin') {
+                    navigate('/admin/dashboard');  
+                } else if(data.role === 'Owner'){
+                    navigate('/owner');  
+                }else {
+                    navigate('/home');  
+                }
+
             } else {
                 throw new Error('Login failed. Please check your credentials.');
             }
