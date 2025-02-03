@@ -14,7 +14,7 @@
 	<name>bookingservice</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
 		<jwt.version>0.9.1</jwt.version>
 	</properties>
@@ -29,6 +29,15 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--		</dependency>-->
 
 <!--		<dependency>-->
 <!--			<groupId>mysql</groupId>-->
@@ -45,6 +54,39 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-config</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>-->
+<!--		</dependency>-->
+
+		<!-- JUNIT TESTS -->
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8</artifactId>
+			<version>2.33.2</version>
 			<scope>test</scope>
 		</dependency>
 
