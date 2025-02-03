@@ -1,0 +1,26 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-SERVICE
+          uri: http://localhost:7777
+          predicates:
+            - Path=/authenticate/**
+        - id: BOOKING-SERVICE
+          uri: http://localhost:8082
+          predicates:
+            - Path=/schedules/**
+logging:
+  level:
+    org.springframework: DEBUG
+
+jwt:
+  secret: mySecretKey
+  expireMs: 3600000
+  refrEshexpireMs: 120000
