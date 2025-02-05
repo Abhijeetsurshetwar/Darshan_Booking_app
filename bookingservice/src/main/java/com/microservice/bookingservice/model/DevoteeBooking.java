@@ -1,8 +1,10 @@
 package com.microservice.bookingservice.model;
 
 
-import com.sun.istack.NotNull;
-import javax.persistence.*;
+
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
