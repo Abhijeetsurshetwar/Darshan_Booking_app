@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/schedules/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET,"//donation/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/donation/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/donation/**").hasRole("USER")
                         .requestMatchers(HttpMethod.POST, "/booking/**").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/schedules/**").hasRole("USER")

@@ -3,7 +3,6 @@
 
 # Maven build directory
 target/
-src/
 # Maven specific files
 pom.xml.tag
 pom.xml.releaseBackup
