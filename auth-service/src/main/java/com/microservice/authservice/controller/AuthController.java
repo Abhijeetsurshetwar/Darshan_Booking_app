@@ -1,12 +1,12 @@
 package com.microservice.authservice.controller;
 
+import com.microservice.authservice.entities.ERole;
+import com.microservice.authservice.entities.RefreshToken;
+import com.microservice.authservice.entities.Role;
+import com.microservice.authservice.entities.User;
 import com.microservice.authservice.exception.RefreshTokenException;
 import com.microservice.authservice.exception.RoleException;
 import com.microservice.authservice.jwt.JwtUtils;
-import com.microservice.authservice.model.ERole;
-import com.microservice.authservice.model.RefreshToken;
-import com.microservice.authservice.model.Role;
-import com.microservice.authservice.model.User;
 import com.microservice.authservice.payload.request.LoginRequest;
 import com.microservice.authservice.payload.request.SignUpRequest;
 import com.microservice.authservice.payload.request.TokenRefreshRequest;

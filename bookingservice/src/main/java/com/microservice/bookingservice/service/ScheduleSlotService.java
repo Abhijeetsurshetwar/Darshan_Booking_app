@@ -2,10 +2,11 @@ package com.microservice.bookingservice.service;
 
 
 
-import com.microservice.bookingservice.model.DevoteeBooking;
-import com.microservice.bookingservice.model.Schedule;
-import com.microservice.bookingservice.model.ScheduleDate;
-import com.microservice.bookingservice.model.Slot;
+import com.microservice.bookingservice.entities.DevoteeBooking;
+import com.microservice.bookingservice.entities.DummyDevotee;
+import com.microservice.bookingservice.entities.Schedule;
+import com.microservice.bookingservice.entities.ScheduleDate;
+import com.microservice.bookingservice.entities.Slot;
 import com.microservice.bookingservice.repository.DevoteeBookingRepository;
 import com.microservice.bookingservice.repository.ScheduleDateRepository;
 import com.microservice.bookingservice.repository.ScheduleRepository;
@@ -101,7 +102,31 @@ public class ScheduleSlotService {
         }
 
     }
-
+    
+    @Transactional
+    public DevoteeBooking createPoojaBookingAndUpdateSlot(String date, String slot, DummyDevotee request) {
+    	DevoteeBooking devoteebooking = null;
+    	try {
+    		reduceVacancy(date, slot, request.getTotalDevotee());
+    		devoteebooking = processPoojaSlotBook(date,slot,request);
+    		
+    	}catch(Exception e) {
+    		throw new RuntimeException("Pooja Booking service is down");
+    	}
+    	
+    	return getBookingById(devoteebooking.getBookingId());
+    }
+    
+    public DevoteeBooking processPoojaSlotBook(String date,String slot,DummyDevotee DevoteeBooking) {
+    	DevoteeBooking devotee = new DevoteeBooking();
+    	devotee.setUserName(DevoteeBooking.getUserName());
+    	devotee.setBookingId(createBookingId());
+    	devotee.setSlot(slot);
+    	devotee.setDate(date);
+    	
+        return devoteeBookingRepository.save(devotee);
+    }
+    
     public long createBookingId() {
         long bookingId = generateRandomBookingId();
 

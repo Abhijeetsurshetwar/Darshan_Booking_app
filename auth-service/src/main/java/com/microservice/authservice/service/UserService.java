@@ -1,11 +1,12 @@
 package com.microservice.authservice.service;
 
-import com.microservice.authservice.model.User;
+import com.microservice.authservice.entities.User;
 import com.microservice.authservice.repository.UserRepository;
+
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service

@@ -8,7 +8,6 @@ import com.microservice.authservice.security.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -42,30 +41,34 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .headers().frameOptions().disable().and()
-                .csrf().disable()
-                .cors().and()
-                .authorizeRequests(auth -> {
-                    auth.anyRequest().permitAll();
-                })
-                .formLogin().disable()
-                .httpBasic().disable()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilterBefore(authenticationJwtTokenFilter(jwtUtils,customUserDetailsService), UsernamePasswordAuthenticationFilter.class)
+                .headers()
+                    .frameOptions().disable()
+                    .and()
+                .csrf().disable() // Disable CSRF
+                .cors().and() // Enable CORS
+                .authorizeHttpRequests(auth -> auth
+                    .anyRequest().permitAll() // Allow all requests
+                )
+                .formLogin().disable() // Disable form login
+                .httpBasic().disable() // Disable HTTP Basic authentication
+                .exceptionHandling()
+                    .accessDeniedHandler(accessDeniedHandler)
+                    .authenticationEntryPoint(authenticationEntryPoint)
+                    .and()
+                .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Stateless session management
+                    .and()
+                .addFilterBefore(authenticationJwtTokenFilter(jwtUtils, customUserDetailsService),
+                        UsernamePasswordAuthenticationFilter.class) // Add custom JWT filter
                 .build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/authenticate/signup","/authenticate/login", "/authenticate/refreshtoken");
+        return (web) -> web.ignoring().requestMatchers("/authenticate/signup","/authenticate/login", "/authenticate/refreshtoken");
     }
 
     @Bean

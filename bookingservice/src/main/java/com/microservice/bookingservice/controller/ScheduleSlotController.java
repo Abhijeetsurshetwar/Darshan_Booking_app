@@ -1,8 +1,9 @@
 package com.microservice.bookingservice.controller;
 
 
-import com.microservice.bookingservice.model.DevoteeBooking;
-import com.microservice.bookingservice.model.Schedule;
+import com.microservice.bookingservice.entities.DevoteeBooking;
+import com.microservice.bookingservice.entities.DummyDevotee;
+import com.microservice.bookingservice.entities.Schedule;
 import com.microservice.bookingservice.service.ScheduleSlotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,15 @@ public class ScheduleSlotController {
             @RequestBody DevoteeBooking request) {
         return ResponseEntity.ok(scheduleSlotService.createBookingAndUpdateSlot(date, slot, request));
 
+    }
+    
+    @PostMapping("/poojabooking")
+    public ResponseEntity<DevoteeBooking> bookPoojaSlot(
+    		@RequestParam("date") String date,
+    		@RequestParam("slot") String slot,
+    		@RequestBody DummyDevotee request){
+    
+    	return ResponseEntity.ok(scheduleSlotService.createPoojaBookingAndUpdateSlot(date,slot,request));
     }
 
 }
