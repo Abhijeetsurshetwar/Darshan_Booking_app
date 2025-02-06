@@ -1,4 +1,4 @@
-package com.microservice.bookingservice.model;
+package com.microservice.bookingservice.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

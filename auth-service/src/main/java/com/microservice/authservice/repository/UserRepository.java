@@ -1,7 +1,8 @@
 package com.microservice.authservice.repository;
 
-import com.microservice.authservice.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.microservice.authservice.entities.User;
 
 import java.util.Optional;
 

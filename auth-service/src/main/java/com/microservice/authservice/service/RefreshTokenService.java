@@ -1,6 +1,6 @@
 package com.microservice.authservice.service;
 
-import com.microservice.authservice.model.RefreshToken;
+import com.microservice.authservice.entities.RefreshToken;
 import com.microservice.authservice.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

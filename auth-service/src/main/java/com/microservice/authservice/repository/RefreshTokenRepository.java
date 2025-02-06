@@ -1,7 +1,8 @@
 package com.microservice.authservice.repository;
 
-import com.microservice.authservice.model.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.microservice.authservice.entities.RefreshToken;
 
 import java.util.Optional;
 

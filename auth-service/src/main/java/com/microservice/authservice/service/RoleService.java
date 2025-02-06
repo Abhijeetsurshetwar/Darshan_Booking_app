@@ -1,12 +1,13 @@
 package com.microservice.authservice.service;
 
-import com.microservice.authservice.model.ERole;
-import com.microservice.authservice.model.Role;
+import com.microservice.authservice.entities.ERole;
+import com.microservice.authservice.entities.Role;
 import com.microservice.authservice.repository.RoleRepository;
+
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service

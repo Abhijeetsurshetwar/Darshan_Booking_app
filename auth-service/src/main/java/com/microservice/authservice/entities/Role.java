@@ -1,12 +1,9 @@
-package com.microservice.authservice.model;
+package com.microservice.authservice.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.*;
 import java.io.Serializable;
 

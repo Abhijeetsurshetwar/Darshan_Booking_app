@@ -1,17 +1,17 @@
-package com.microservice.bookingservice.model;
-
+package com.microservice.bookingservice.entities;
 
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.antlr.v4.runtime.misc.NotNull;
 
 
 @Entity
 public class DevoteeBooking {
 
+	private String id;
     @Id
     private Long bookingId;
 

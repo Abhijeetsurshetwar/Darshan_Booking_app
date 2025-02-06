@@ -20,6 +20,8 @@ public class DevoteeServices {
     @Autowired
     private DevoteeRepositories devoteeRepository;
 
+    @Autowired
+    private UserService userservice;
 
     public List<Devotee> getAllDevotees() {
         return devoteeRepository.findAll();
@@ -28,17 +30,16 @@ public class DevoteeServices {
     public Devotee getDevoteeById(int id) {
         return devoteeRepository.findById(id).orElse(null);
     }
-
-
-  
-    @Transactional
+     @Transactional
     public void insertDevotee(HashMap<String, String> Mapu) {
     	int Did = 1000 + (int)(Math.random() * 9000);
     	User user =new User();
     	user.setUname(Mapu.get("uname"));
-    	user.setPassword(Mapu.get("password"));
+    	String encryptedpassword = userservice.encryptPassword(Mapu.get("password"));
+    	user.setPassword(encryptedpassword);
     	user.setRole(Mapu.get("role"));
     	
+    
     	
     	
     	Devotee devotee = new Devotee();

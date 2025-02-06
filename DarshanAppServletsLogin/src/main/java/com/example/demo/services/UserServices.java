@@ -1,13 +1,13 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entities.Devotee;
-import com.example.demo.entities.User;
-import com.example.demo.repository.DevoteeRepositories;
-import com.example.demo.repository.UserRepositories;
+ import com.example.demo.entities.User;
+ import com.example.demo.repository.UserRepositories;
 
 import jakarta.transaction.Transactional;
 
@@ -18,6 +18,8 @@ public class UserServices {
     @Autowired
     private UserRepositories userrepo;
    
+    @Autowired
+    private UserService userservice;
   
     // all Users
     public List<User> getAllUsers() {
@@ -26,6 +28,8 @@ public class UserServices {
 
     
     public void insertuser(User user) {
+    	String encrypString = userservice.encryptPassword(user.getPassword());
+    	System.out.println(encrypString);
     	userrepo.save(user);
     }
 
@@ -37,7 +41,16 @@ public class UserServices {
     
     // Use repository to find the user by username and password
     public User validateUser(String uname, String password) {
-        return userrepo.findByUnameAndPassword(uname, password);
+    	
+    	System.out.println(userservice.encryptPassword(password));
+    	
+    	Optional<User> user = userrepo.findByUname(uname);
+    	if (user.isPresent() && userservice.checkPassword(password, user.get().getPassword())) {
+    	    return user.get();
+    	} else {
+    	    throw new RuntimeException("Invalid credentials");
+    	}
+
     }
 
 

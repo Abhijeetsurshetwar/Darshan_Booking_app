@@ -1,7 +1,7 @@
 package com.microservice.authservice.security;
 
+import com.microservice.authservice.entities.User;
 import com.microservice.authservice.exception.UserNotFoundException;
-import com.microservice.authservice.model.User;
 import com.microservice.authservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

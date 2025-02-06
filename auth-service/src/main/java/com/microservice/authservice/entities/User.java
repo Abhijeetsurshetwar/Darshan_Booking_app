@@ -1,4 +1,4 @@
-package com.microservice.authservice.model;
+package com.microservice.authservice.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

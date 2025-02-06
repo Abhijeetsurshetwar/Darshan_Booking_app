@@ -1,4 +1,4 @@
-package com.microservice.bookingservice.model;
+package com.microservice.bookingservice.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,15 +20,16 @@ public class ScheduleDate {
     @OneToMany(mappedBy = "scheduleDate", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Slot> slots = new ArrayList<>();
-
+ 
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     @JsonBackReference
     private Schedule schedule;
 
+ 
 
-    public Long getId() {
-        return id;
+	public Long getId() {
+        return id;	
     }
 
     public void setId(Long id) {

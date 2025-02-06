@@ -14,7 +14,7 @@ import com.example.demo.services.UserServices;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-//@RequestMapping("/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -35,8 +35,6 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User user) {
         User loggedInUser = userService.validateUser(user.getUname(), user.getPassword());
-        System.out.println(user.getUname());
-        System.out.println(user.getPassword());
 //        System.out.println(loggedInUser);
         if (loggedInUser != null) {
             return loggedInUser; 
