@@ -7,14 +7,46 @@ const RegisterForm = () => {
     userName: "",
     password: "",
     confirmPassword: "",
-    age: "",
-    gender: "",
+    
     email: "",
-    contactNo: "",
+    
   });
 
   const navigate = useNavigate();
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (formData.password === formData.confirmPassword) {
+  //     const reqInfo = {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         username: formData.userName,
+  //         password: formData.password,
+  //         role: "ROLE_USER",
+  //         email: formData.email,
+       
+  //       }),
+  //     };
+
+  //     fetch("http://localhost:8061/authenticate/signup", reqInfo)  // username all small and password all small email all small and send  role as a ROle_USER
+  //       .then((res) => {
+  //         if (res.status === 200) {
+  //           navigate("/login");
+  //         } else {
+  //           console.log(res);
+  //           alert(res.stringify);  // message getting from the backend
+  //         }
+          
+  //       })
+  //       .catch((err) => {
+  //         console.error("Error:", err);
+  //         alert("An error occurred. Please try again later.");
+  //       });
+  //   } else {
+  //     alert("Passwords do not match. Please try again.");
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password === formData.confirmPassword) {
@@ -22,24 +54,21 @@ const RegisterForm = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          uname: formData.userName,
+          username: formData.userName,
           password: formData.password,
-          role: "Devotee",
-          age: formData.age,
-          gender: formData.gender,
+          role: "ROLE_USER",
           email: formData.email,
-          contactNo: formData.contactNo,
         }),
       };
-
-      fetch("http://localhost:8061/devotees/insertDevotee", reqInfo)
-        .then((res) => {
-          if (res.status === 200) {
+  
+      fetch("http://localhost:8061/authenticate/signup", reqInfo)
+        .then(async (res) => {
+          if (res.ok) {
             navigate("/login");
           } else {
-            alert("Registration failed. Please try again.");
+            const errorData = await res.json(); // Convert response to JSON
+            alert(errorData.message || "An error occurred. Please try again.");
           }
-          
         })
         .catch((err) => {
           console.error("Error:", err);
@@ -49,6 +78,7 @@ const RegisterForm = () => {
       alert("Passwords do not match. Please try again.");
     }
   };
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -88,7 +118,7 @@ const RegisterForm = () => {
             />
           </div>
 
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Age</label>
             <input
               type="number"
@@ -100,9 +130,9 @@ const RegisterForm = () => {
               className="form-control"
               required
             />
-          </div>
+          </div> */}
 
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Gender</label>
             <select
               name="gender"
@@ -116,7 +146,7 @@ const RegisterForm = () => {
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Email</label>
@@ -130,7 +160,7 @@ const RegisterForm = () => {
             />
           </div>
 
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Contact Number</label>
             <input
               type="tel"
@@ -142,7 +172,7 @@ const RegisterForm = () => {
               className="form-control"
               required
             />
-          </div>
+          </div> */}
 
           <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Password</label>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux"; // ✅ Import useSelector to access Redux
 import UserMenu from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -7,6 +8,11 @@ const Donation = () => {
   const [reason, setReason] = useState("");
   const [donorName, setDonorName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  // ✅ Get user info and token from Redux
+  const userInfo = useSelector((state) => state.user.userinfo);
+  const token = userInfo?.token; 
+  const username = userInfo?.username; 
 
   const reasons = [
     "Temple Development",
@@ -17,12 +23,42 @@ const Donation = () => {
     "Religious Rituals",
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (amount && reason && donorName) {
-      setSubmitted(true);
-    } else {
+    
+    if (!amount || !reason || !donorName) {
       alert("Please fill all fields before donating.");
+      return;
+    }
+
+    const donationData = {
+      ammount: Number(amount), 
+      purpose: reason, 
+      user_name: username, 
+    };
+    
+
+    try {
+      const response = await fetch("http://localhost:8062/donation/bookdonation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(donationData),
+        credentials: "include",  // ✅ Ensures cookies are sent with request (if needed)
+      });
+      
+
+      if (!response.ok) {
+        throw new Error("Donation failed. Please try again.");
+      }
+
+      console.log("✅ Donation successful:", await response.json());
+      setSubmitted(true);
+    } catch (error) {
+      console.error("❌ Donation Error:", error.message);
+      alert(error.message || "An unexpected error occurred.");
     }
   };
 
@@ -146,7 +182,7 @@ const Donation = () => {
               <p style={{ fontSize: "18px", fontWeight: "bold", color: "#333" }}>
                 "None of our success would be possible without generous donors like you.
                 <br />
-                Thank you again for your commitment and kindness.
+                Thank you again for your commitment and kindness."
               </p>
               <h3 style={{ color: "#8B0000" }}>Thank You, {donorName}! 🙏</h3>
               <button
@@ -169,7 +205,7 @@ const Donation = () => {
           )}
         </div>
       </div>
-     <Footer />
+      <Footer />
     </>
   );
 };
