@@ -21,7 +21,7 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="d-none d-md-flex">
             <div className="d-flex align-items-center gap-3">
-              <Link to="/" className="btn btn-warning text-white fw-medium">Home</Link>
+              <Link to="/home" className="btn btn-warning text-white fw-medium">Home</Link>
               <a href="#darshan" className="btn btn-warning text-white fw-medium">Darshan Times</a>
               <Link to="/events" className="btn btn-warning text-white fw-medium">Events</Link>
               <a href="#gallery" className="btn btn-warning text-white fw-medium">Gallery</a>

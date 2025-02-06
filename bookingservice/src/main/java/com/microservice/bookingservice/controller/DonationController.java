@@ -4,16 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.bookingservice.entities.Donation;
 import com.microservice.bookingservice.service.DonationService;
 
-@Controller
+@CrossOrigin(origins = "http://localhost:3000")
+
+@RestController
 @RequestMapping("/donation")
 public class DonationController {
 
