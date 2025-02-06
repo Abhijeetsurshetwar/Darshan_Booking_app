@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import UserMenu from './UserMenu';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
+import Events from './Events';
+
 
 export default function Navbar() {  
-  const logstatus = useSelector((state)=>state.user.logginstate)
+  //const logstatus = useSelector((state)=>state.user.logginstate)
 
 
   return (
@@ -21,7 +23,7 @@ export default function Navbar() {
             <div className="d-flex align-items-center gap-3">
               <Link to="/" className="btn btn-warning text-white fw-medium">Home</Link>
               <a href="#darshan" className="btn btn-warning text-white fw-medium">Darshan Times</a>
-              <a href="#events" className="btn btn-warning text-white fw-medium">Events</a>
+              <Link to="/events" className="btn btn-warning text-white fw-medium">Events</Link>
               <a href="#gallery" className="btn btn-warning text-white fw-medium">Gallery</a>
               <a href="#contact" className="btn btn-warning text-white fw-medium">Contact</a>
               <UserMenu />

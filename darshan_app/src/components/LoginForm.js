@@ -59,7 +59,7 @@ export default function LoginForm() {
 
     return (
         <div>
-            <Navbar />
+          
             <div
                 className="min-vh-100 d-flex align-items-center justify-content-center bg-light"
                 style={{ background: 'linear-gradient(to bottom right, #fef3c7, #e9d5ff)' }}
