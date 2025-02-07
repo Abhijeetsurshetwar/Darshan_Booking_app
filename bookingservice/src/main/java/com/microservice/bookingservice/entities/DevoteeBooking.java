@@ -11,7 +11,6 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Entity
 public class DevoteeBooking {
 
-	private String id;
     @Id
     private Long bookingId;
 

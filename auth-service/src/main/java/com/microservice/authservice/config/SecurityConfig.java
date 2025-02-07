@@ -50,6 +50,7 @@ public class SecurityConfig {
                 .csrf().disable() // Disable CSRF
                 .cors().and() // Enable CORS
                 .authorizeHttpRequests(auth -> auth
+                	.requestMatchers("authenticate/update-profile").authenticated()
                     .anyRequest().permitAll() // Allow all requests
                 )
                 .formLogin().disable() // Disable form login

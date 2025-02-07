@@ -38,7 +38,7 @@ const Setting = () => {
     e.preventDefault();
     try {
       console.log("Submitting Data:", formData); // Debugging log
-      await axios.post("http://localhost:8062/admin/insert-accomodation", formData, {
+      await axios.post("http://localhost:8065/Accomodation/insert-accomodation", formData, {
         headers: { "Content-Type": "application/json" },
       });
       console.log("Insertion successful!");
@@ -55,7 +55,7 @@ const Setting = () => {
     try {
       console.log("Deleting accommodation with AID:", aid); // Debugging log
   
-      await axios.delete("http://localhost:8062/admin/delete-accomodation", {
+      await axios.delete("http://localhost:8065/Accomodation/delete-accomodation", {
         data: { aid }, // Sending aid in request body
         headers: { "Content-Type": "application/json" },
       });
