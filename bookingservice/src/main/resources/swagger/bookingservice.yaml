@@ -1,0 +1,203 @@
+openapi: 3.0.0
+info:
+  title: Schedule API
+  description: API for creating schedules with dates and slots
+  version: 1.0.0
+paths:
+  /schedules/createScheduleWithDates:
+    post:
+      summary: Create a schedule with dates and slots
+      operationId: createScheduleWithDates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scheduleDates:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        format: date
+                      slots:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            time:
+                              type: string
+                              format: time
+                            vacancy:
+                              type: integer
+      responses:
+        "200":
+          description: Schedule created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  scheduleDates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                          format: date
+                        slots:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              time:
+                                type: string
+                                format: time
+                              vacancy:
+                                type: integer
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timestamp:
+                    type: string
+                    format: date-time
+                  path:
+                    type: string
+                  status:
+                    type: integer
+                  error:
+                    type: string
+                  requestId:
+                    type: string
+  /schedules:
+    get:
+      summary: Get all schedules
+      operationId: getSchedules
+      responses:
+        "200":
+          description: List of schedules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    scheduleDates:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          date:
+                            type: string
+                            format: date
+                          slots:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                time:
+                                  type: string
+                                  format: time
+                                vacancy:
+                                  type: integer
+  /booking:
+    post:
+      summary: Create a booking
+      operationId: createBooking
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: slot
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                date:
+                  type: string
+                  format: date
+                slot:
+                  type: string
+                  format: time
+                totalDevotee:
+                  type: integer
+                devoteeNames:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      devoteeName:
+                        type: string
+                      age:
+                        type: integer
+                      gender:
+                        type: string
+                      aadharNumber:
+                        type: string
+      responses:
+        "200":
+          description: Booking created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookingId:
+                    type: integer
+                  userName:
+                    type: string
+                  date:
+                    type: string
+                    format: date
+                  slot:
+                    type: string
+                    format: time
+                  totalDevotee:
+                    type: integer
+                  devoteeNames:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        devoteeName:
+                          type: string
+                        age:
+                          type: integer
+                        gender:
+                          type: string
+                        aadharNumber:
+                          type: string

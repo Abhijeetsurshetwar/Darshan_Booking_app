@@ -1,5 +1,9 @@
 package com.example.demo.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,14 +31,15 @@ public class User {
     @Column(name = "Uname", nullable = false, unique = true)
     private String uname;
 
-    @Column(name = "Password", nullable = false)
+    @Column(name = "Password", nullable = false ,unique = true)
     private String password;
 
     @Column(name = "Role", nullable = false)
     private String role;
 
-    
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Devotee devotee;
-
+    
+ 
 }

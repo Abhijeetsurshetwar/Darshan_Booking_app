@@ -1,0 +1,28 @@
+server:
+  port: 8061
+
+jwt:
+  secret: mysecretmysecretmysecretmysecretmysecretmysecret
+  expireMs: 3600000
+  refrEshexpireMs: 120000
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/P06_shreeuser
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update  # or create, create-drop based on your need
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

@@ -215,6 +215,7 @@
     padding: 15px;
   }
 }
+ 
 .gallery-section {
   padding: 20px;
   background-image: url('./Mybgimage.jpg'); /* Set BGimage as background */
@@ -258,3 +259,4 @@
 .photo-info.show {
   display: block; /* Show info when toggled */
 }
+ 

@@ -35,15 +35,7 @@ public class Booking {
 	
 	@Column(name = "Gender")
 	String gender;
-	
-	@Column(name = "DID")
-	int did;
-	
-	@Column(name = "SID")
-	int sid;
-	
-	@Column(name = "PayID")
-	String payid;
+
 	
 	@Column(name = "BDate")
 	Date bdate;
@@ -53,16 +45,26 @@ public class Booking {
 
 
 	@ManyToOne
-	@JoinColumn(name = "DID", referencedColumnName = "DID")
-	private Devotee devotee;
-	
-	@ManyToOne
-	@JoinColumn(name = "PayID", referencedColumnName = "PayID")
-	private Payment payment;
-
-
-	@ManyToOne
 	@JoinColumn(name = "SID")
 	private Slot slot; 
 
+	
+	@ManyToOne
+	@JoinColumn(name="PayID")
+	private Payment payment;
+	
+	@ManyToOne
+	@JoinColumn(name = "DID")
+	private Devotee devotee;
+	
+	
+	
+//	@Column(name = "DID")
+//	int did;
+//	
+//	@Column(name = "SID")
+//	int sid;
+//	
+//	@Column(name = "PayID")
+//	String payid;
 }

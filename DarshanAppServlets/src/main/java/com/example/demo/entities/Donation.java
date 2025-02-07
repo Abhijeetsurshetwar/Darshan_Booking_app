@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,33 +38,20 @@ public class Donation {
     @Column(name = "Purpose", nullable = false)
     private String purpose;
 
-    @Column(name = "payid", nullable = false)
-    private int payid;
-
-    @Column(name = "did", nullable = false)
-    private int did; 
     
-//Need to review  
-    /*
-    //Done taking instance of devotee to retrieve all Donations of particular devotee
-    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
-    private List<Donation> donations;
-    
-    //Done taking instance of donation to retrieve all Payments 
-    @OneToOne(mappedBy = "donation" , cascade = CascadeType.ALL)
-    private Donation donation;
-
-    */
-    
-    
-    //Done
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL )
     @JoinColumn(name = "did")
+    @JsonIgnoreProperties("did")
     private Devotee devotee;
 
-    //Done 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="payid" )
+    @JoinColumn(name ="payid")
     private Payment payment;
+    
+//    @Column(name = "payid", nullable = false)
+//    private int payid;
+//
+//    @Column(name = "did", nullable = false)
+//    private int did; 
     
 }

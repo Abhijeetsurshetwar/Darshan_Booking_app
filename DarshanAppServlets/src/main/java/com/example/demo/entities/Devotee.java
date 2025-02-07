@@ -1,6 +1,11 @@
 package com.example.demo.entities;
 
+ 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,7 +30,6 @@ import lombok.NoArgsConstructor;
 public class Devotee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DID")
     private int did;
 
@@ -40,28 +44,27 @@ public class Devotee {
 
     @Column(name = "Contactno", nullable = false, unique = true)
     private String contactNo;
-
-    @Column(name = "UID", nullable = false)
-    private int uid; 
-
     
     //Done
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "UID")
+    @JsonBackReference
     private User user;
     
     
     //Done taking instance of donation to retrieve all Donations
-    @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("devotee")
+    @OneToMany(mappedBy = "devotee", cascade = CascadeType.PERSIST)
     private List<Donation> donation;
-        
-    //Done taking instance of Payments to retrieve all Payments
-    @OneToMany(mappedBy = "devotee" , cascade =CascadeType.ALL)
-    private List<Payment> payments;
-   
+    
+
     
   //Done taking instance of Payments to retrieve all Bookings
+    @JsonIgnoreProperties("devotee")
     @OneToMany(mappedBy = "devotee", cascade = CascadeType.ALL)
     private List<Booking> bookings;
+    
+  
+    
     
 }
