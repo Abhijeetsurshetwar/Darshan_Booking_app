@@ -20,7 +20,7 @@ const Setting = () => {
   // Function to fetch accommodations
   const fetchAccommodations = async () => {
     try {
-      const response = await axios.get("http://localhost:8062/admin/getaccc");
+      const response = await axios.get("https://localhost:8065/Accomodation/getAccomodation");
       console.log("Fetched Data:", response.data); // Debugging log
       setAccommodations(response.data);
     } catch (error) {

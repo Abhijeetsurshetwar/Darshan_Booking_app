@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.microservice.bookingservice.entities.Donation;
 import com.microservice.bookingservice.service.DonationService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/donation")
 public class DonationController {
