@@ -12,7 +12,7 @@ const Donation = () => {
   //  Get user info and token from Redux
   const userInfo = useSelector((state) => state.user.userinfo);
   const token = userInfo?.token; 
-  const username = userInfo?.username; 
+  const username = userInfo?.uname; 
 
   const reasons = [
     "Temple Development",
@@ -46,7 +46,6 @@ const Donation = () => {
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(donationData),
-        credentials: "include",  // ✅ Ensures cookies are sent with request (if needed)
       });
       
 

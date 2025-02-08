@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C-DAC\\.Net\\Accomodation\\WebApplication1\\Accomodation.csproj": {}
+    "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj": {}
   },
   "projects": {
-    "D:\\C-DAC\\.Net\\Accomodation\\WebApplication1\\Accomodation.csproj": {
+    "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C-DAC\\.Net\\Accomodation\\WebApplication1\\Accomodation.csproj",
+        "projectUniqueName": "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj",
         "projectName": "Accomodation",
-        "projectPath": "D:\\C-DAC\\.Net\\Accomodation\\WebApplication1\\Accomodation.csproj",
+        "projectPath": "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj",
         "packagesPath": "C:\\Users\\abhij\\.nuget\\packages\\",
-        "outputPath": "D:\\C-DAC\\.Net\\Accomodation\\WebApplication1\\obj\\",
+        "outputPath": "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

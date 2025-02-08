@@ -26,7 +26,7 @@ public class Slot {
         this.id = id;
     }
 
-    public String getTime() {
+	public String getTime() {
         return time;
     }
 

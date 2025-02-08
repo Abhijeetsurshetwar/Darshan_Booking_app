@@ -1,9 +1,9 @@
 package com.microservice.bookingservice.service;
 
 
-
-import com.microservice.bookingservice.entities.DevoteeBooking;
 import com.microservice.bookingservice.entities.DummyDevotee;
+import com.microservice.bookingservice.entities.DevoteeBooking;
+
 import com.microservice.bookingservice.entities.Schedule;
 import com.microservice.bookingservice.entities.ScheduleDate;
 import com.microservice.bookingservice.entities.Slot;
@@ -31,6 +31,7 @@ public class ScheduleSlotService {
     @Autowired
     private DevoteeBookingRepository devoteeBookingRepository;
 
+    
     @Autowired
     private SlotRepository slotRepository;
 
@@ -83,6 +84,7 @@ public class ScheduleSlotService {
         return getBookingById(devoteeBooking.getBookingId());
     }
 
+    //To reduce the vacancy of slots for Darshan
     public void reduceVacancy(String date, String slot, Integer totalDevotee) {
         ScheduleDate scheduleDate = scheduleDateRepository.findByDate(date);
         if (scheduleDate == null) {
@@ -103,6 +105,29 @@ public class ScheduleSlotService {
 
     }
     
+    //To reduce the vacancy for Poojabooking
+    public void reducePoojaVacancy(String date,String slot,Integer totalDevotee) {
+    	ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date, 1l);
+        if (scheduleDate == null) {
+            throw new RuntimeException("Schedule not found for date: " + date);
+        }
+
+        Slot slotReduce = scheduleDate.getSlots().stream()
+                .filter(s -> s.getTime().equals(slot))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Slot not found for time: " + slot));
+
+        if (slotReduce.getVacancy() >= totalDevotee) {
+            slotReduce.setVacancy(slotReduce.getVacancy() - totalDevotee);
+            slotRepository.save(slotReduce); // Persist the updated slot
+        } else {
+            throw new RuntimeException("Not enough vacancy to reduce by " + totalDevotee);
+        }
+    }
+   
+    
+    
+    
     @Transactional
     public DevoteeBooking createPoojaBookingAndUpdateSlot(String date, String slot, DummyDevotee request) {
     	DevoteeBooking devoteebooking = null;
@@ -117,6 +142,7 @@ public class ScheduleSlotService {
     	return getBookingById(devoteebooking.getBookingId());
     }
     
+    //Process for pooja Booking
     public DevoteeBooking processPoojaSlotBook(String date,String slot,DummyDevotee DevoteeBooking) {
     	DevoteeBooking devotee = new DevoteeBooking();
     	devotee.setUserName(DevoteeBooking.getUserName());
@@ -127,6 +153,7 @@ public class ScheduleSlotService {
         return devoteeBookingRepository.save(devotee);
     }
     
+    //To generate the random pooja
     public long createBookingId() {
         long bookingId = generateRandomBookingId();
 
@@ -138,5 +165,10 @@ public class ScheduleSlotService {
         return bookingId; // Return unique booking ID
     }
 
+    
+    
+    public List<DevoteeBooking> getbookingbyuserName(String username){
+    	return devoteeBookingRepository.findByUserName(username);
+    }
 
 }

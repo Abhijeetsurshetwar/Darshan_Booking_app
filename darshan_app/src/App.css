@@ -300,10 +300,13 @@
   }
 }
 
- 
 .gallery-section {
   padding: 20px;
   background-image: url(''); /* Set BGimage as background */
+ 
+.gallery-section {
+  padding: 20px;
+  background-image: url('./Mybgimage.jpg'); /* Set BGimage as background */
   background-size: cover; /* Cover the entire section */
   background-position: center; /* Center the background image */
 }
@@ -344,7 +347,6 @@
 .photo-info.show {
   display: block; /* Show info when toggled */
 }
- 
 
 /* Background Styling with Holy Spiritual Theme */
 .support-background {

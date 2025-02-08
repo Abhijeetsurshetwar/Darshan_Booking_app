@@ -34,4 +34,8 @@ public class UserService{
     public User findById(int userId) {
         return userRepository.findById(userId);
     }
+
+    public Optional<User> findbyid(int userid){
+    	return Optional.ofNullable(userRepository.findById(userid));
+    }
 }

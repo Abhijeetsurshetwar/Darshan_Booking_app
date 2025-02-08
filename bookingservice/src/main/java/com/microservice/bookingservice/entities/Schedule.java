@@ -11,9 +11,20 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "name")
+    private String name;
+    
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ScheduleDate> scheduleDates = new ArrayList<>();
     
@@ -29,11 +40,11 @@ public class Schedule {
 	}
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
