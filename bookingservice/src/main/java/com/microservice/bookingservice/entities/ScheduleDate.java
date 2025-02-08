@@ -32,7 +32,12 @@ public class ScheduleDate {
         return id;	
     }
 
-    public void setId(Long id) {
+    @Override
+	public String toString() {
+		return "ScheduleDate [id=" + id + ", date=" + date + ", slots=" + slots + ", schedule=" + schedule + "]";
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 

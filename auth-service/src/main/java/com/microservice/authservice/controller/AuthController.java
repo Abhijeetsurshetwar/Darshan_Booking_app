@@ -26,6 +26,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -158,4 +159,29 @@ public class AuthController {
 
         return ResponseEntity.ok(new TokenRefreshResponse(newToken, requestRefreshToken));
     }
+    
+    @PutMapping("/update-profile")
+    public ResponseEntity<?> updateUserProfile(@RequestBody User updatedUser) {
+        // Get the authenticated user's username from SecurityContext
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();  // Logged-in user's username
+
+        // Find the user in the database
+        User existingUser = userService.findByUsername(currentUsername)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Update user details
+        existingUser.setUsername(updatedUser.getUsername());
+        existingUser.setEmail(updatedUser.getEmail());
+
+        // If password is provided, encrypt before saving
+        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
+            existingUser.setPassword(encoder.encode(updatedUser.getPassword()));
+        }
+
+        userService.saveUser(existingUser);
+        return ResponseEntity.ok(new MessageResponse("Profile updated successfully!"));
+    }
+
+
 }
