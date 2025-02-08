@@ -171,4 +171,9 @@ public class ScheduleSlotService {
     	return devoteeBookingRepository.findByUserName(username);
     }
 
+	public List<DevoteeBooking> getBookings() {
+		// TODO Auto-generated method stub
+		return devoteeBookingRepository.findAll();
+	}
+
 }

@@ -1,57 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserPlus } from "lucide-react";
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    userName: "",
-    password: "",
-    confirmPassword: "",
-    
-    email: "",
-    
-  });
-
   const navigate = useNavigate();
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password === formData.confirmPassword) {
-      const reqInfo = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: formData.userName,
-          password: formData.password,
-          role: "ROLE_USER",
-          email: formData.email,
-        }),
-      };
-  
-      fetch("http://localhost:8061/authenticate/signup", reqInfo)
-        .then(async (res) => {
-          if (res.ok) {
-            navigate("/login");
-          } else {
-            const errorData = await res.json(); // Convert response to JSON
-            alert(errorData.message || "An error occurred. Please try again.");
-          }
-        })
-        .catch((err) => {
-          console.error("Error:", err);
-          alert("An error occurred. Please try again later.");
-        });
-    } else {
-      alert("Passwords do not match. Please try again.");
-    }
-  };
-  
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  // Initialize useForm hook
+  const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm();
+
+  const onSubmit = async (data) => {
+    const reqInfo = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: data.userName,
+        password: data.password,
+        role: "ROLE_USER",
+        email: data.email,
+      }),
+    };
+
+    try {
+      const res = await fetch("http://localhost:8061/authenticate/signup", reqInfo);
+      if (res.ok) {
+        navigate("/login");
+      } else {
+        const errorData = await res.json(); // Convert response to JSON
+        alert(errorData.message || "An error occurred. Please try again.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -72,101 +53,79 @@ const RegisterForm = () => {
           <p className="text-muted">Register for darshan booking</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
-            <label className="form-label fw-semibold text-dark">User Name</label>
+            <label className="form-label fw-semibold text-dark">User  Name</label>
             <input
               type="text"
-              name="userName"
-              value={formData.userName}
-              onChange={handleChange}
-              className="form-control"
-              required
+              {...register("userName", { 
+                required: "User  Name is required", 
+                minLength: {
+                  value: 3,
+                  message: "User  Name must be at least 3 characters long"
+                },
+                maxLength: {
+                  value: 20,
+                  message: "User  Name cannot exceed 20 characters"
+                }
+              })}
+              className={`form-control ${errors.userName ? 'is-invalid' : ''}`}
             />
+            {errors.userName && <div className="invalid-feedback">{errors.userName.message}</div>}
           </div>
-
-          {/* <div className="mb-3">
-            <label className="form-label fw-semibold text-dark">Age</label>
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              min="1"
-              max="120"
-              className="form-control"
-              required
-            />
-          </div> */}
-
-          {/* <div className="mb-3">
-            <label className="form-label fw-semibold text-dark">Gender</label>
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="form-select"
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div> */}
 
           <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Email</label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="form-control"
-              required
+              {...register("email", { 
+                required: "Email is required", 
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Invalid email address"
+                }
+              })}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             />
+            {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
           </div>
-
-          {/* <div className="mb-3">
-            <label className="form-label fw-semibold text-dark">Contact Number</label>
-            <input
-              type="tel"
-              name="contactNo"
-              value={formData.contactNo}
-              onChange={handleChange}
-              pattern="[0-9]{10}"
-              title="Please enter a valid 10-digit phone number"
-              className="form-control"
-              required
-            />
-          </div> */}
 
           <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Password</label>
             <input
               type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="form-control"
-              required
+              {...register("password", { 
+                required: "Password is required", 
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters long"
+                },
+                validate: {
+                  hasNumber: value => /[0-9]/.test(value) || "Password must contain at least one number",
+                  hasUpperCase: value => /[A-Z]/.test(value) || "Password must contain at least one uppercase letter",
+                  hasLowerCase: value => /[a-z]/.test(value) || "Password must contain at least one lowercase letter",
+                }
+              })}
+              className={`form-control ${errors.password ? 'is-invalid' : ''}`}
             />
+            {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
           </div>
 
           <div className="mb-3">
             <label className="form-label fw-semibold text-dark">Confirm Password</label>
             <input
               type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="form-control"
-              required
+              {...register("confirmPassword", { 
+                required: "Please confirm your password",
+                validate: value => value === watch('password') || "Passwords do not match"
+              })}
+              className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
             />
+            {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword.message}</div>}
           </div>
 
-          <button type="submit" className="btn btn-warning w-100">
-            Register
+          <button type="submit" className="btn btn-warning w-100" disabled={isSubmitting}>
+            {isSubmitting ? 'Registering...' : 'Register'}
           </button>
         </form>
       </div>

@@ -41,7 +41,7 @@
 .book-darshan-container {
   background: linear-gradient(to bottom, #fde3bf, #ee8b7e);
 
-
+}
 /* Improved Styling for Alignment and Bold Labels */
 .booking-container {
   position: relative;
@@ -306,7 +306,7 @@
  
 .gallery-section {
   padding: 20px;
-  background-image: url('./Mybgimage.jpg'); /* Set BGimage as background */
+  /* background-image: url('./Mybgimage.jpg'); Set BGimage as background */
   background-size: cover; /* Cover the entire section */
   background-position: center; /* Center the background image */
 }
@@ -575,5 +575,15 @@ h1, h5 {
     transform: translateY(0);
   }
 }
+
+.support-card {
+  position: relative;  /* Ensure the card can have absolute positioned elements inside */
+}
+
+.overlay {
+  /* Add overlay styles here if needed */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
 
 }
