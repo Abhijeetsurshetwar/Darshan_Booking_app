@@ -118,8 +118,8 @@ const Donation = () => {
                     borderRadius: "6px",
                     border: "1px solid #ccc",
                     fontSize: "16px",
-                  }}
-                />
+                  } }
+                 />
                 <input
                   type="number"
                   placeholder="Enter Donation Amount (₹)"

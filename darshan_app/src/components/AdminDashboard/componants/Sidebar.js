@@ -1,7 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { Logout } from '../../Redux/Slice';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    // Perform any logout logic here (e.g., clearing tokens)
+    // Redirect to the login page
+      
+    dispatch(Logout());    
+    navigate('/login');
+  };
+
   return (
     <div
       className="vh-100 p-4 bg-warning text-white"
@@ -21,7 +34,6 @@ const Sidebar = () => {
           { path: '/admin/booking', label: '📖 Booking' },
           { path: '/admin/donations', label: '💰 Donations' },
           { path: '/admin/setting', label: '🏠 Accommodation' },
-          
         ].map((item, index) => (
           <li key={index} className="mb-2">
             <Link
@@ -43,6 +55,29 @@ const Sidebar = () => {
             </Link>
           </li>
         ))}
+        {/* Logout Link integrated into the last item */}
+        <li className="mb-2">
+          <button
+            onClick={handleLogout}
+            className="d-block py-2 px-3 text-white text-decoration-underline fs-5 bg-danger bg-opacity-10 rounded"
+            style={{
+              transition: 'all 0.3s ease',
+              border: 'none',
+              background: 'none',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = 'rgba(220, 53, 69, 0.5)';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'rgba(220, 53, 69, 0.1)';
+              e.target.style.transform = 'scale(1)';
+            }}
+          >
+            🚪 Logout
+          </button>
+        </li>
       </ul>
     </div>
   );

@@ -1,4 +1,3 @@
-
 namespace WebApplication1
 {
     public class Program
@@ -8,9 +7,21 @@ namespace WebApplication1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            // Add CORS Policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:3000") // React frontend URL
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
+                    });
+            });
+
+            // Swagger configuration
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -25,8 +36,10 @@ namespace WebApplication1
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            // Use the CORS policy
+            app.UseCors("AllowReactApp");
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

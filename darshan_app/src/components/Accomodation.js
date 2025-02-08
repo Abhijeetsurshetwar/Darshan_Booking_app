@@ -13,7 +13,7 @@ const Accommodation = () => {
   useEffect(() => {
     const fetchAccommodations = async () => {
       try {
-        const response = await axios.get("http://localhost:8062/user/accommodations");
+        const response = await axios.get("https://localhost:8065/Accomodation/getAccomodation");
         setAccommodations(response.data);
         setLoading(false);
       } catch (err) {
@@ -30,18 +30,18 @@ const Accommodation = () => {
       <Navbar /> {/* Navbar */}
 
       <Container className="py-5">
-        <h1 className="accommodation-title">🏠 Available Accommodations 🏠</h1>
+        <h1 className="text-center mb-4">🏠 Available Accommodations 🏠</h1>
 
         {loading ? (
-          <div className="loading-container">
+          <div className="text-center">
             <Spinner animation="border" variant="warning" />
             <p className="mt-2">Fetching data...</p>
           </div>
         ) : error ? (
           <p className="text-danger text-center">{error}</p>
         ) : (
-          <Card className="accommodation-card">
-            <Table responsive bordered hover className="accommodation-table">
+          <Card className="shadow-sm">
+            <Table responsive bordered hover variant="light">
               <thead>
                 <tr>
                   <th>Sr. No</th>
@@ -58,7 +58,7 @@ const Accommodation = () => {
                     <td>{item.name}</td>
                     <td>{item.availability ? "Available" : "Not Available"}</td>
                     <td>{item.address}</td>
-                    <td>{item.contactNo}</td>
+                    <td>{item.contactno}</td>
                   </tr>
                 ))}
               </tbody>

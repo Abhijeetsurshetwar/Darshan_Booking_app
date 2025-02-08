@@ -37,8 +37,7 @@ public class ScheduleSlotController {
         return ResponseEntity.ok(scheduleSlotService.createBookingAndUpdateSlot(date, slot, request));
 
     }
- 
-    
+     
     @GetMapping("/getbooking")
     public ResponseEntity<List<DevoteeBooking>> getBookingbyUser_name(@RequestParam String username){
     	String s = username;
@@ -56,5 +55,10 @@ public class ScheduleSlotController {
     	return ResponseEntity.ok(scheduleSlotService.createPoojaBookingAndUpdateSlot(date,slot,request));
     }
     
+    
+    @GetMapping("all-bookings")
+    public ResponseEntity<List<DevoteeBooking>> allBooking(){
+    	return ResponseEntity.ok(scheduleSlotService.getBookings());
+    }
 
 }
