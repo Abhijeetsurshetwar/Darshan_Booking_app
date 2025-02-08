@@ -22,10 +22,11 @@ export default function Navbar() {
           <div className="d-none d-md-flex">
             <div className="d-flex align-items-center gap-3">
               <Link to="/home" className="btn btn-warning text-white fw-medium">Home</Link>
-              <a href="#darshan" className="btn btn-warning text-white fw-medium">Darshan Times</a>
+              <Link to="/darshantimes" className="btn btn-warning text-white fw-medium">Darshan Times</Link>
               <Link to="/events" className="btn btn-warning text-white fw-medium">Events</Link>
-              <a href="#gallery" className="btn btn-warning text-white fw-medium">Gallery</a>
-              <a href="#contact" className="btn btn-warning text-white fw-medium">Contact</a>
+              <Link to="/gallery" className="btn btn-warning text-white fw-medium">Gallery</Link>
+              <Link to="/accomodation" className="btn btn-warning text-white fw-medium">Accomodation</Link>
+              <Link to="/support" className="btn btn-warning text-white fw-medium">Contact Us</Link>
               <UserMenu />
             </div>
           </div>

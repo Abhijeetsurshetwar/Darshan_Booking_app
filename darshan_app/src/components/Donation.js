@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux"; // ✅ Import useSelector to access Redux
+import { useSelector } from "react-redux"; //  Import useSelector to access Redux
 import UserMenu from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -9,7 +9,7 @@ const Donation = () => {
   const [donorName, setDonorName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Get user info and token from Redux
+  //  Get user info and token from Redux
   const userInfo = useSelector((state) => state.user.userinfo);
   const token = userInfo?.token; 
   const username = userInfo?.username; 
