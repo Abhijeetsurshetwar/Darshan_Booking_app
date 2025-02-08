@@ -13,40 +13,7 @@ const RegisterForm = () => {
   });
 
   const navigate = useNavigate();
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (formData.password === formData.confirmPassword) {
-  //     const reqInfo = {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         username: formData.userName,
-  //         password: formData.password,
-  //         role: "ROLE_USER",
-  //         email: formData.email,
-       
-  //       }),
-  //     };
-
-  //     fetch("http://localhost:8061/authenticate/signup", reqInfo)  // username all small and password all small email all small and send  role as a ROle_USER
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           navigate("/login");
-  //         } else {
-  //           console.log(res);
-  //           alert(res.stringify);  // message getting from the backend
-  //         }
-          
-  //       })
-  //       .catch((err) => {
-  //         console.error("Error:", err);
-  //         alert("An error occurred. Please try again later.");
-  //       });
-  //   } else {
-  //     alert("Passwords do not match. Please try again.");
-  //   }
-  // };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password === formData.confirmPassword) {

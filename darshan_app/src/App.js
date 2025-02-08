@@ -12,9 +12,10 @@ import Dashboard from './components/AdminDashboard/pages/Dashboard';
 import Booking from './components/AdminDashboard/pages/Booking';
 import Donations from './components/AdminDashboard/pages/Donation';
 import Setting from './components/AdminDashboard/pages/Setting';
-import Support from './components/AdminDashboard/pages/Support';
+import Support from './components/Support';
 import Donation from './components/Donation';
 import Events from './components/Events';
+import Accommodation from './components/Accomodation';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/book-pooja" element={<BookPooja />} />
         <Route path="/donation" element={<Donation />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/accomodation" element={<Accommodation />} />
 
 
         {/* Redirect to login by default */}

@@ -1,0 +1,75 @@
+import React, { useEffect, useState } from "react";
+import { Table, Container, Card, Spinner } from "react-bootstrap";
+import axios from "axios";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import "../App.css"; // Import CSS
+
+const Accommodation = () => {
+  const [accommodations, setAccommodations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAccommodations = async () => {
+      try {
+        const response = await axios.get("http://localhost:8062/user/accommodations");
+        setAccommodations(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to load accommodation data.");
+        setLoading(false);
+      }
+    };
+
+    fetchAccommodations();
+  }, []);
+
+  return (
+    <div className="accommodation-page">
+      <Navbar /> {/* Navbar */}
+
+      <Container className="py-5">
+        <h1 className="accommodation-title">🏠 Available Accommodations 🏠</h1>
+
+        {loading ? (
+          <div className="loading-container">
+            <Spinner animation="border" variant="warning" />
+            <p className="mt-2">Fetching data...</p>
+          </div>
+        ) : error ? (
+          <p className="text-danger text-center">{error}</p>
+        ) : (
+          <Card className="accommodation-card">
+            <Table responsive bordered hover className="accommodation-table">
+              <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Name</th>
+                  <th>Availability</th>
+                  <th>Address</th>
+                  <th>Contact No</th>
+                </tr>
+              </thead>
+              <tbody>
+                {accommodations.map((item, index) => (
+                  <tr key={item.id}>
+                    <td>{index + 1}</td>
+                    <td>{item.name}</td>
+                    <td>{item.availability ? "Available" : "Not Available"}</td>
+                    <td>{item.address}</td>
+                    <td>{item.contactNo}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card>
+        )}
+      </Container>
+
+      <Footer /> {/* Footer */}
+    </div>
+  );
+};
+
+export default Accommodation;
