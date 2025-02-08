@@ -21,7 +21,7 @@ const Sidebar = () => {
           { path: '/admin/booking', label: '📖 Booking' },
           { path: '/admin/donations', label: '💰 Donations' },
           { path: '/admin/setting', label: '🏠 Accommodation' },
-          { path: '/admin/support', label: '📞 Support' },
+          
         ].map((item, index) => (
           <li key={index} className="mb-2">
             <Link

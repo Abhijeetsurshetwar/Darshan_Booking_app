@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react"; 
+
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import "../App.css";
 import UserMenu from "../components/Navbar";
@@ -9,32 +11,54 @@ export default function BookDarshan() {
   const [slots, setSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState("");
   const [numPersons, setNumPersons] = useState(1);
-  const [devotees, setDevotees] = useState([
-    { id: 1, name: "", age: "", gender: "", idCard: "" },
-  ]);
+  const [devotees, setDevotees] = useState([]);
   const [totalAmount, setTotalAmount] = useState(200);
+  const [formValid, setFormValid] = useState(false);
+
+  const token = useSelector((state) => state.user.userinfo.token);
+  console.log("Redux Token:", token);
+  const userinfo = useSelector((state) => state.user.userinfo);
 
   useEffect(() => {
     if (date) {
+      console.log(`Fetching slots for date: ${date}`);
+
       axios
-        .get(`http://localhost:8080/api/slots?date=${date}`)
-        .then((res) => setSlots(res.data))
+        .get("http://localhost:8062/schedules", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          console.log("API Response:", res);
+          const darshanSchedule = res.data.find((item) => item.name === "Darshan");
+
+          if (darshanSchedule) {
+            const availableSlots =
+              darshanSchedule.scheduleDates.find((schedule) => schedule.date === date)?.slots || [];
+            setSlots(availableSlots);
+            console.log("Filtered Slots:", availableSlots);
+          } else {
+            console.warn("No 'Darshan' schedule found.");
+          }
+        })
         .catch((err) => console.error("Error fetching slots:", err));
     }
-  }, [date]);
+  }, [date, token]);
 
   useEffect(() => {
     setTotalAmount(numPersons * 200);
-    setDevotees(
-      Array.from({ length: numPersons }, (_, i) => ({
-        id: i + 1,
-        name: "",
-        age: "",
-        gender: "",
-        idCard: "",
-      }))
-    );
+    const updatedDevotees = Array.from({ length: numPersons }, (_, i) => ({
+      id: i + 1,
+      name: "",
+      age: "",
+      gender: "",
+      idCard: "",
+    }));
+    setDevotees(updatedDevotees);
   }, [numPersons]);
+
+  useEffect(() => {
+    setFormValid(devotees.every((d) => d.name && d.age && d.gender && d.idCard));
+  }, [devotees]);
 
   const handleDevoteeChange = (index, field, value) => {
     const updatedDevotees = [...devotees];
@@ -44,10 +68,27 @@ export default function BookDarshan() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const bookingData = { date, slot: selectedSlot, numPersons, totalAmount, devotees };
+
+    const bookingData = {
+      userName: userinfo.uname,
+      date,
+      slot: selectedSlot,
+      totalDevotee: numPersons,
+      devoteeNames: devotees.map((devotee) => ({
+        devoteeName: devotee.name,
+        age: parseInt(devotee.age, 10),
+        gender: devotee.gender,
+        aadharNumber: devotee.idCard,
+      })),
+    };
+
+    console.log("Submitting Booking Data:", bookingData);
 
     try {
-      await axios.post("http://localhost:8080/api/book-darshan", bookingData);
+      const response = await axios.post("http://localhost:8062/booking?date=${date}&slot=${selectedSlot}", bookingData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("Booking Response:", response.data);
       alert("🙏 Booking Successful! May Lord bless you! 🙏");
     } catch (error) {
       console.error("Booking failed:", error);
@@ -58,43 +99,9 @@ export default function BookDarshan() {
   return (
     <>
       <UserMenu />
-      <div
-        style={{
-          position: "relative",
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          background: `url('https://media.istockphoto.com/id/508628776/photo/sunset-over-kandariya-mahadeva-temple.jpg?s=612x612&w=0&k=20&c=YOpVZmLiY4ccl_aoWRJhfqLpNEDgjyOGuTAKbobCO-U=')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        ></div>
-        
-        <div
-          style={{
-            position: "relative",
-            background: "rgba(255, 255, 255, 0.9)",
-            padding: "30px",
-            borderRadius: "12px",
-            maxWidth: "600px",
-            textAlign: "center",
-            boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-            marginTop: "50px",
-          }}
-        >
-          <h2 style={{ color: "#8B0000", fontFamily: "Georgia, serif" }}>🙏 Book Your Darshan 🙏</h2>
+      <div className="booking-container">
+        <div className="booking-form">
+          <h2>🙏 Book Your Darshan 🙏</h2>
           
           <div className="input-group">
             <label>Select Date:</label>
@@ -115,7 +122,7 @@ export default function BookDarshan() {
                 <option value="">-- Select Slot --</option>
                 {slots.map((slot) => (
                   <option key={slot.id} value={slot.time}>
-                    {slot.time} (Vacancies: {slot.vacancies})
+                    {slot.time} (Vacancies: {slot.vacancy})
                   </option>
                 ))}
               </select>
@@ -131,13 +138,56 @@ export default function BookDarshan() {
                   className="form-control"
                   min="1"
                   value={numPersons}
-                  onChange={(e) => setNumPersons(e.target.value)}
+                  onChange={(e) => setNumPersons(parseInt(e.target.value))}
                   required
                 />
-                <p className="amount-display">💰 Total Amount: ₹{totalAmount}</p>
+                
+              </div>
+              <div> 
+              <p className="amount-display">💰 Total Amount: ₹{totalAmount}</p>
               </div>
 
-              <button className="btn-book" onClick={handleSubmit}>
+              <div>
+                <h3>Devotees Details</h3>
+                {devotees.map((devotee, index) => (
+                  <div key={devotee.id} className="devotee-form">
+                    <label>Devotee Name:</label>
+                    <input
+                      type="text"
+                      value={devotee.name}
+                      onChange={(e) => handleDevoteeChange(index, "name", e.target.value)}
+                      className="form-control"
+                    />
+                    <label>Age:</label>
+                    <input
+                      type="number"
+                      value={devotee.age}
+                      onChange={(e) => handleDevoteeChange(index, "age", e.target.value)}
+                      className="form-control"
+                    />
+                    <label>Gender:</label>
+                    <select
+                      value={devotee.gender}
+                      onChange={(e) => handleDevoteeChange(index, "gender", e.target.value)}
+                      className="form-control"
+                    >
+                      <option value="">-- Select Gender --</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <label>Aadhar Number:</label>
+                    <input
+                      type="text"
+                      value={devotee.idCard}
+                      onChange={(e) => handleDevoteeChange(index, "idCard", e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <button className="btn-book" disabled={!formValid} onClick={handleSubmit}>
                 ✨ Confirm Booking ✨
               </button>
             </>
