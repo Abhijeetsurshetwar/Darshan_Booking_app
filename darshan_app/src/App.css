@@ -36,6 +36,7 @@
     transform: rotate(360deg);
   }
 }
+ 
 .book-darshan-container {
   background: linear-gradient(to bottom, #fde3bf, #ee8b7e);
   min-height: 100vh;
@@ -214,3 +215,48 @@
     padding: 15px;
   }
 }
+ 
+.gallery-section {
+  padding: 20px;
+  background-image: url('./Mybgimage.jpg'); /* Set BGimage as background */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the background image */
+}
+
+.photos-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 10px; /* Space between images */
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-caption {
+  text-align: center;
+  cursor: pointer;
+  color: yellow; /* Set caption color to yellow */
+  font-weight: bold; /* Make caption bold */
+}
+
+.photo-info {
+  display: none; /* Hide info by default */
+}
+
+.photo-info.show {
+  display: block; /* Show info when toggled */
+}
+ 
