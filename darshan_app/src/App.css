@@ -36,7 +36,6 @@
     transform: rotate(360deg);
   }
 }
-
 .book-darshan-container {
   background: linear-gradient(to bottom, #fde3bf, #ee8b7e);
 
@@ -526,6 +525,7 @@ h1, h5 {
   }
 }
 
+
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 .main-container {
@@ -537,6 +537,23 @@ h1, h5 {
 .support-card {
   position: relative;  /* Ensure the card can have absolute positioned elements inside */
 
+.support-card {
+  position: relative;  /* Ensure the card can have absolute positioned elements inside */
+}
+
+.overlay {
+  /* Add overlay styles here if needed */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+
+.main-container {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLjS7iGJnT4xrSRXX4uVEgvxAoZQoYAEPzw&s") no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
 }
 
 /* Login Button Hover Effect */
@@ -643,6 +660,7 @@ h1, h5 {
 .temple-img:hover, .sai-img:hover {
   transform: scale(1.05);
 }
+
 /*My booikings*/
 .mybookings-container {
   background-image: url("https://img.freepik.com/free-photo/beautiful-spiritual-background-with-mandala_23-2149078423.jpg");
@@ -694,5 +712,7 @@ h1, h5 {
 .loading-spinner {
   display: block;
   margin: auto;
+}
+
 }
 }
