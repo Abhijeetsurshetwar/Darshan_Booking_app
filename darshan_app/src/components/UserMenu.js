@@ -39,7 +39,7 @@ export default function UserMenu() {
         >
           <button
             onClick={() => {
-              navigate('/bookings');
+              navigate('/mybookings');
               setIsOpen(false);
             }}
             className="dropdown-item text-start text-dark"
@@ -48,7 +48,7 @@ export default function UserMenu() {
           </button>
           <button
             onClick={() => {
-              navigate('/profile');
+              navigate('/updateprofile');
               setIsOpen(false);
             }}
             className="dropdown-item text-start text-dark"

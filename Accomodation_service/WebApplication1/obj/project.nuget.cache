@@ -1,35 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "q+vOlji38cg=",
-  "success": true,
-  "projectFilePath": "D:\\C-DAC\\Peojects\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\abhij\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.36\\microsoft.entityframeworkcore.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.36\\microsoft.entityframeworkcore.abstractions.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.36\\microsoft.entityframeworkcore.analyzers.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.36\\microsoft.entityframeworkcore.design.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.36\\microsoft.entityframeworkcore.relational.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.36\\microsoft.entityframeworkcore.tools.6.0.36.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.1\\microsoft.extensions.caching.abstractions.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.3\\microsoft.extensions.caching.memory.6.0.3.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.1\\microsoft.extensions.configuration.abstractions.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.2\\microsoft.extensions.dependencyinjection.6.0.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.logging\\6.0.1\\microsoft.extensions.logging.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.4\\microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.options\\6.0.1\\microsoft.extensions.options.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.1\\microsoft.extensions.primitives.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.3\\pomelo.entityframeworkcore.mysql.6.0.3.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\system.collections.immutable\\6.0.1\\system.collections.immutable.6.0.1.nupkg.sha512",
-    "C:\\Users\\abhij\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512"
-  ],
-  "logs": []
+  "dgSpecHash": "3ywqigYmb/w=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Sharyu Malshette\\Documents\\GitHub\\Darshan_Booking_app\\Accomodation_service\\WebApplication1\\Accomodation.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.\r\n  An error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'",
+      "libraryId": "Swashbuckle.AspNetCore"
+    }
+  ]
 }

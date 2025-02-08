@@ -37,15 +37,9 @@
   }
 }
 
- 
-.book-darshan-container {
-  background: linear-gradient(to bottom, #fde3bf, #ee8b7e);
-
-
 /* Improved Styling for Alignment and Bold Labels */
 .booking-container {
   position: relative;
-
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -299,55 +293,6 @@
     padding: 15px;
   }
 }
-
-.gallery-section {
-  padding: 20px;
-  background-image: url(''); /* Set BGimage as background */
- 
-.gallery-section {
-  padding: 20px;
-  background-image: url('./Mybgimage.jpg'); /* Set BGimage as background */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the background image */
-}
-
-.photos-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 10px; /* Space between images */
-}
-
-.image-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.gallery-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.photo-caption {
-  text-align: center;
-  cursor: pointer;
-  color: yellow; /* Set caption color to yellow */
-  font-weight: bold; /* Make caption bold */
-}
-
-.photo-info {
-  display: none; /* Hide info by default */
-}
-
-.photo-info.show {
-  display: block; /* Show info when toggled */
-}
-
 /* Background Styling with Holy Spiritual Theme */
 .support-background {
   position: fixed;
@@ -576,4 +521,91 @@ h1, h5 {
   }
 }
 
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.main-container {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLjS7iGJnT4xrSRXX4uVEgvxAoZQoYAEPzw&s") no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
 }
+
+/* Login Button Hover Effect */
+#login-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Zoom for Program Cards */
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Fade-in Animation for Images */
+.temple-img, .sai-img {
+  transition: transform 0.5s ease-in-out;
+}
+.temple-img:hover, .sai-img:hover {
+  transform: scale(1.05);
+}
+
+.mybookings-container {
+  background-image: url("https://img.freepik.com/free-photo/beautiful-spiritual-background-with-mandala_23-2149078423.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px #ffcc00;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f8d210;
+  margin-bottom: 20px;
+}
+
+.table-shadow {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-shadow th {
+  background: #f8d210;
+  color: #000;
+}
+
+.table-shadow td {
+  color: #000;
+}
+
+.devotee-details {
+  background: #f8d210;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.loading-spinner {
+  display: block;
+  margin: auto;
+}
+
+
+
+
+

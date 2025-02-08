@@ -16,12 +16,15 @@ import Support from './components/Support';
 import Donation from './components/Donation';
 import Events from './components/Events';
 import Accommodation from './components/Accomodation';
+import MyBookings from './components/MyBooking';
+import Mainpage from './components/Mainpage';
 
 function App() {
   return (
     
       <Routes>
         {/* User Routes */}
+        <Route path="/mainpage" element={<Mainpage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/home" element={<HomePage />} />
@@ -33,10 +36,12 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/support" element={<Support />} />
         <Route path="/accomodation" element={<Accommodation />} />
+        <Route path="/mybookings" element={<MyBookings />} />
+        
 
 
         {/* Redirect to login by default */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/mainpage" />} />
 
         {/* Admin Routes */}
         <Route path="/admin/*" element={<AdminLayout />} />

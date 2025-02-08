@@ -105,3 +105,6 @@ D:\C-DAC\Peojects\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\D
 D:\C-DAC\Peojects\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\Accomodation.pdb
 D:\C-DAC\Peojects\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\Accomodation.genruntimeconfig.cache
 D:\C-DAC\Peojects\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\ref\Accomodation.dll
+C:\Users\Sharyu Malshette\Documents\GitHub\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\Accomodation.dll
+C:\Users\Sharyu Malshette\Documents\GitHub\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\refint\Accomodation.dll
+C:\Users\Sharyu Malshette\Documents\GitHub\Darshan_Booking_app\Accomodation_service\WebApplication1\obj\Debug\net6.0\Accomodation.pdb

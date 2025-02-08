@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="container py-5">
         <div className="row row-cols-1 row-cols-md-3 g-4">
           <div>
-            <h3 className="h5 font-weight-bold mb-3">Contact Us</h3>
+            <h3 className="h5 font-weight-bold mb-3">Address :</h3>
             <div className="mb-2">
-              <p className="d-flex align-items-center"><MapPin className="me-2" size={20} /> 123 Temple Street, City</p>
-              <p className="d-flex align-items-center"><Phone className="me-2" size={20} /> +91 95185 05699</p>
+              <p className="d-flex align-items-center"><MapPin className="me-2" size={20} /> Shri Saibaba Sansthan, )</p>
+              <p className="d-flex align-items-center"><Phone className="me-2" size={20} /> PO: Shirdi Tal. Rahata Dist. Ahmednagar State- Maharashtra India</p>
               <p className="d-flex align-items-center"><Mail className="me-2" size={20} /> info@temple.com</p>
             </div>
           </div>
@@ -26,17 +26,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="h5 font-weight-bold mb-3">Newsletter</h3>
-            <p className="mb-3">Subscribe to receive updates about events and festivals.</p>
+            <h3 className="h5 font-weight-bold mb-3">For Online Services please do contact on</h3>
+            <p className="mb-3">02423-258956, 02423-258963,</p>
+            <p className="mb-3">Help Line No.</p> 
+            <p className="mb-3">+91 7588375204 / 7588371245 /7588373189 / 7588374469</p>
             <div className="d-flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="form-control rounded-0"
-              />
-              <button className="btn btn-warning rounded-0 ms-2">
-                Subscribe
-              </button>
+              
             </div>
           </div>
         </div>
