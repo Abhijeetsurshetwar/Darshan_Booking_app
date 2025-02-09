@@ -16,6 +16,7 @@ import Support from './components/Support';
 import Donation from './components/Donation';
 import Events from './components/Events';
 import Accommodation from './components/Accomodation';
+import CreateSchedule from './components/AdminDashboard/pages/createSchedules';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin/*" element={<AdminLayout />} />
+        <Route path="/createSchedules" element={<CreateSchedule/>}/>
       </Routes>
     
   );
