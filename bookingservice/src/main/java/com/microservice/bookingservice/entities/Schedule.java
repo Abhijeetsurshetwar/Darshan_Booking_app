@@ -13,12 +13,12 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name")
+    private String name;
+    
 	@OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ScheduleDate> scheduleDates = new ArrayList<>();
-    
-    @Column(name = "name")
-    private String name;
     
     public String getName() {
 		return name;

@@ -86,7 +86,7 @@ public class ScheduleSlotService {
 
     //To reduce the vacancy of slots for Darshan
     public void reduceVacancy(String date, String slot, Integer totalDevotee) {
-        ScheduleDate scheduleDate = scheduleDateRepository.findByDate(date);
+        ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date,1l);
         if (scheduleDate == null) {
             throw new RuntimeException("Schedule not found for date: " + date);
         }
@@ -107,7 +107,7 @@ public class ScheduleSlotService {
     
     //To reduce the vacancy for Poojabooking
     public void reducePoojaVacancy(String date,String slot,Integer totalDevotee) {
-    	ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date, 1l);
+    	ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date, 2l);
         if (scheduleDate == null) {
             throw new RuntimeException("Schedule not found for date: " + date);
         }
@@ -130,14 +130,14 @@ public class ScheduleSlotService {
     
     @Transactional
     public DevoteeBooking createPoojaBookingAndUpdateSlot(String date, String slot, DummyDevotee request) {
+    	System.out.println(date + " " + slot);
     	DevoteeBooking devoteebooking = null;
     	try {
-    		reduceVacancy(date, slot, request.getTotalDevotee());
+    		reducePoojaVacancy(date, slot, request.getTotalDevotee());
     		devoteebooking = processPoojaSlotBook(date,slot,request);
     		
     	}catch(Exception e) {
-    		throw new RuntimeException("Pooja Booking service is down");
-    	}
+    		e.printStackTrace();	}
     	
     	return getBookingById(devoteebooking.getBookingId());
     }
