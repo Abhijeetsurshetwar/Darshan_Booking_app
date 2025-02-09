@@ -9,8 +9,6 @@ export default function Footer() {
           <div>
             <h3 className="h5 font-weight-bold mb-3">Address :</h3>
             <div className="mb-2">
-              <p className="d-flex align-items-center"><MapPin className="me-2" size={20} /> Shri Saibaba Sansthan, )</p>
-
               <p className="d-flex align-items-center"><MapPin className="me-2" size={20} /> Shri Saibaba Sansthan,</p>
 
               <p className="d-flex align-items-center"><Phone className="me-2" size={20} /> PO: Shirdi Tal. Rahata Dist. Ahmednagar State- Maharashtra India</p>

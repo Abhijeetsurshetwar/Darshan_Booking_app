@@ -1,16 +1,15 @@
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
-import Navbar from "../components/Navbar"; // Import Navbar
-import Footer from "../components/Footer"; // Import Footer
-import "../App.css"; // Import CSS for styling
+import Navbar from "../components/Navbar"; 
+import Footer from "../components/Footer"; 
+import "../App.css"; 
 
 const Support = () => {
   return (
     <div className="support-page">
-      {/* Navbar */}
+ 
       <Navbar />
 
-      {/* Background with Overlay */}
       <div className="support-background">
         <div className="overlay"></div>
       </div>
@@ -56,7 +55,6 @@ const Support = () => {
         </Card>
       </Container>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

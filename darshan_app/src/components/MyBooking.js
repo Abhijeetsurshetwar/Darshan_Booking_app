@@ -50,7 +50,7 @@ const MyBookings = () => {
         ) : (
           <>
             {/* Darshan Bookings Table */}
-            <h2 className="section-title">🛕 Darshan Bookings</h2>
+            <h2 className="section-title">🛕 Darshan Bookings 🛕</h2>
             {darshanBookings.length > 0 ? (
               <table className="booking-table">
                 <thead>

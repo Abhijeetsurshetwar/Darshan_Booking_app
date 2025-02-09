@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import UserMenu from './UserMenu';
 //import { useSelector } from 'react-redux';
-import Events from './Events';
+
 
 
 export default function Navbar() {  
