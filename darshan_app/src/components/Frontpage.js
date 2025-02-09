@@ -12,7 +12,7 @@ export default function Frontpage() {
       <div 
         className="position-absolute top-0 start-0 w-100 h-100"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&q=80")',
+          backgroundImage: 'url("https://www.saibabaofindia.com/images/shirdi_sai_baba_sunrise_wp800.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -22,7 +22,7 @@ export default function Frontpage() {
       
       {/* Content Centered */}
       <div className="position-relative text-center text-white px-4" style={{ zIndex: 10 }}>
-        <h1 className="display-4 mb-4">श्री मंदिर</h1>
+        <h1 className="display-4 mb-4">साईं मंदिर</h1>
         <p className="lead mb-4">Experience Divine Peace and Spiritual Enlightenment</p>
 
         {/* Buttons Stacked Vertically */}

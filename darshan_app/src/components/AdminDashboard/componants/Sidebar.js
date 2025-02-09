@@ -1,7 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { Logout } from '../../Redux/Slice';
 
 const Sidebar = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    // Perform any logout logic here (e.g., clearing tokens)
+    // Redirect to the login page
+      
+    dispatch(Logout());    
+    navigate('/mainpage');
+  };
+
   return (
     <div
       className="vh-100 p-4 bg-warning text-white"

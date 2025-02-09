@@ -19,6 +19,10 @@ import Accommodation from './components/Accomodation';
 import MyBookings from './components/MyBooking';
 import Mainpage from './components/Mainpage';
 
+import Gallery from './components/Gallery';
+import UpdateProfile from './components/Updateprofile';
+
+
 function App() {
   return (
     
@@ -28,6 +32,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/mybookings" element={<MyBookings />} />
 
         {/* Routes where Navbar should appear */}
         <Route path="/book-darshan" element={<BookDarshan />} />
@@ -38,6 +43,10 @@ function App() {
         <Route path="/accomodation" element={<Accommodation />} />
         <Route path="/mybookings" element={<MyBookings />} />
         
+
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/updateprofile" element={<UpdateProfile />} />
+
 
 
         {/* Redirect to login by default */}

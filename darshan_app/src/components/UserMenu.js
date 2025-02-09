@@ -57,7 +57,7 @@ export default function UserMenu() {
           </button>
           <button
             onClick={() => {
-              navigate('/login');
+              navigate('/mainpage');
               dispatch(Logout());
             }}
             className="dropdown-item text-start text-dark"

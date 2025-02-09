@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Clock, Calendar, Info, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -38,12 +37,12 @@ const MainPage = () => {
         <section className="row mb-5 align-items-center animate__animated animate__fadeInLeft">
           <div className="col-md-6">
             <h3 className="h3 fw-semibold text-warning">About The Temple</h3>
-            <p className="text-light">
+            <p className="text-dark">
               Shirdi Sai Baba Temple is one of India's most revered spiritual destinations, located in
               Shirdi, Maharashtra. The temple is dedicated to Sai Baba, a spiritual master who preached
               the unity of all religions.
             </p>
-            <p className="text-light">
+            <p className="text-dark">
               The Samadhi Mandir, where Sai Baba's mortal remains are interred, attracts millions of
               devotees annually, seeking blessings and spiritual solace.
             </p>

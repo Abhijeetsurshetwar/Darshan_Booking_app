@@ -49,7 +49,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: url('https://media.istockphoto.com/id/508628776/photo/sunset-over-kandariya-mahadeva-temple.jpg?s=612x612&w=0&k=20&c=YOpVZmLiY4ccl_aoWRJhfqLpNEDgjyOGuTAKbobCO-U=');
+  background: url('https://hindubhagwan.com/Gallery/images/portfolio/full/sai-baba-image.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -190,7 +190,7 @@
 .events-page {
   position: relative;
   min-height: 100vh;
-  background-image: url("https://www.sotc.in/blog/wp-content/uploads/2024/04/Ayodhya-ram-mandir-1.jpg");
+  background-image: url("https://sai.org.in/sites/default/files/event_0.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -298,6 +298,122 @@
   }
 }
 /* Background Styling with Holy Spiritual Theme */
+/*Gallery*/
+/* Background setup */
+.gallery-page {
+  background-image: url("https://img.freepik.com/free-vector/decorative-watercolor-texture-mandala-design_1048-13750.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark navbar for contrast */
+  padding: 10px;
+  color: white;
+}
+
+/* Top Banner Section */
+.gallery-banner {
+  position: relative;
+  background-image: url("https://sai.org.in/sites/default/files/photogallery_0.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+.gallery-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black overlay */
+}
+
+.gallery-title {
+  position: relative;
+  z-index: 1;
+}
+
+/* Image Grid */
+.gallery-section {
+  padding: 30px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Effect */
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-caption {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+/*Gallery*/
 .support-background {
   position: fixed;
   top: 0;
@@ -438,7 +554,7 @@ h1, h5 {
 
 /* Holy Temple Background */
 .accommodation-page {
-  background: url("https://w0.peakpx.com/wallpaper/260/774/HD-wallpaper-the-big-temple-of-tanjore-temple-india-religious-architecture-ancient-hinduism.jpg") no-repeat center center fixed;
+  background: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/6a/ec/d2/sai-ashram.jpg?w=700&h=-1&s=1") no-repeat center center fixed;
   background-size: cover;
   position: relative;
   min-height: 100vh;
@@ -714,5 +830,200 @@ h1, h5 {
   margin: auto;
 }
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.main-container {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLjS7iGJnT4xrSRXX4uVEgvxAoZQoYAEPzw&s") no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+}
+}
+
+
+.support-card {
+  position: relative;  /* Ensure the card can have absolute positioned elements inside */
+
+.support-card {
+  position: relative;  /* Ensure the card can have absolute positioned elements inside */
+}
+
+.overlay {
+  /* Add overlay styles here if needed */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+
+.main-container {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLjS7iGJnT4xrSRXX4uVEgvxAoZQoYAEPzw&s") no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+}
+
+/* Login Button Hover Effect */
+#login-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Zoom for Program Cards */
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Fade-in Animation for Images */
+.temple-img, .sai-img {
+  transition: transform 0.5s ease-in-out;
+}
+.temple-img:hover, .sai-img:hover {
+  transform: scale(1.05);
+}
+
+.mybookings-container {
+  background-image: url("https://img.freepik.com/free-photo/beautiful-spiritual-background-with-mandala_23-2149078423.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px #ffcc00;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f8d210;
+  margin-bottom: 20px;
+}
+
+.table-shadow {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-shadow th {
+  background: #f8d210;
+  color: #000;
+}
+
+.table-shadow td {
+  color: #000;
+}
+
+.devotee-details {
+  background: #f8d210;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.loading-spinner {
+  display: block;
+  margin: auto;
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.main-container {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLjS7iGJnT4xrSRXX4uVEgvxAoZQoYAEPzw&s") no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+}
+
+/* Login Button Hover Effect */
+#login-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Zoom for Program Cards */
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Fade-in Animation for Images */
+.temple-img, .sai-img {
+  transition: transform 0.5s ease-in-out;
+}
+.temple-img:hover, .sai-img:hover {
+  transform: scale(1.05);
+}
+
+/*My booikings*/
+
+.bookings-container {
+  padding: 20px;
+  text-align: center;
+  background: url("https://img.freepik.com/free-photo/beautiful-spiritual-background-with-mandala_23-2149078423.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.bookings-title {
+  font-size: 32px;
+  color: white;
+  text-shadow: 2px 2px 8px black;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-top: 20px;
+  color: #8B0000;
+  text-decoration: underline;
+}
+
+.booking-table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.booking-table th, .booking-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.booking-table th {
+  background: #8B0000;
+  color: white;
+}
+
+.booking-table td {
+  font-size: 16px;
+}
+
+.no-booking {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.loading-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
 }
 }

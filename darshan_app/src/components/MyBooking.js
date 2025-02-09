@@ -1,44 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Table, Container, Spinner, Alert } from "react-bootstrap";
-import "../App.css"; // Add custom styles
-import Navbar from "./Navbar"; // Import existing Navbar
-import Footer from "./Footer"; // Import existing Footer
+import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MyBookings = () => {
-  const [bookings, setBookings] = useState([]);
+  const [darshanBookings, setDarshanBookings] = useState([]);
+  const [poojaBookings, setPoojaBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // Get username & token from Redux
-  const username = useSelector((state) => state.userinfo.uname);
-  const token = useSelector((state) => state.userinfo.token);
+  const userinfo = useSelector((state) => state.user.userinfo);
+  const token = userinfo?.token;
+  const username = userinfo?.uname;
 
   useEffect(() => {
-    if (!username) {
-      setError("User not logged in. Please log in to view your bookings.");
-      setLoading(false);
-      return;
-    }
-
     const fetchBookings = async () => {
-        try {
-        const response = await fetch(`http://localhost:8062/getbooking?username=${username}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
+      try {
+        const response = await axios.get(
+          `http://localhost:8062/getbooking?username=${username}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        console.log("📌 Bookings Data:", response.data);
 
-        if (!response.ok) throw new Error("Failed to fetch bookings.");
+        // Separate Darshan and Pooja bookings
+        const darshan = response.data.filter((booking) => booking.devoteeNames);
+        const pooja = response.data.filter((booking) => !booking.devoteeNames);
 
-        const data = await response.json();
-        setBookings(data);
-        console.log("Bookings fetched successfully:", data);
-      } catch (err) {
-        setError(err.message);
-        console.error("Error fetching bookings:", err);
+        setDarshanBookings(darshan);
+        setPoojaBookings(pooja);
+      } catch (error) {
+        console.error("❌ Error fetching bookings:", error);
       } finally {
         setLoading(false);
       }
@@ -47,26 +39,20 @@ const MyBookings = () => {
     fetchBookings();
   }, [username, token]);
 
-  // Filter Darshan and Pooja bookings
-  const darshanBookings = bookings.filter((b) => b.devoteeNames && b.devoteeNames.length > 0);
-  const poojaBookings = bookings.filter((b) => !b.devoteeNames || b.devoteeNames.length === 0);
-
   return (
     <>
       <Navbar />
-      <div className="mybookings-container">
-        <Container>
-          <h2 className="page-title animate__animated animate__fadeInDown">
-            ✨ My Bookings ✨
-          </h2>
-          {loading && <Spinner animation="border" variant="primary" className="loading-spinner" />}
-          {error && <Alert variant="danger">{error}</Alert>}
+      <div className="bookings-container">
+        <h1 className="bookings-title">📜 My Bookings</h1>
 
-          {/* Darshan Bookings Table */}
-          {darshanBookings.length > 0 && (
-            <div className="booking-section animate__animated animate__fadeInLeft">
-              <h3 className="section-title">📿 Darshan Bookings</h3>
-              <Table striped bordered hover className="table-shadow">
+        {loading ? (
+          <p className="loading-text">⏳ Loading your bookings...</p>
+        ) : (
+          <>
+            {/* Darshan Bookings Table */}
+            <h2 className="section-title">🛕 Darshan Bookings</h2>
+            {darshanBookings.length > 0 ? (
+              <table className="booking-table">
                 <thead>
                   <tr>
                     <th>Sr. No</th>
@@ -78,32 +64,30 @@ const MyBookings = () => {
                 </thead>
                 <tbody>
                   {darshanBookings.map((booking, index) => (
-                    <tr key={booking.bookingId}>
+                    <tr key={index}>
                       <td>{index + 1}</td>
                       <td>{booking.date}</td>
                       <td>{booking.slot}</td>
                       <td>{booking.totalDevotee}</td>
                       <td>
-                        {booking.devoteeNames.map((devotee, i) => (
-                          <div key={devotee.id} className="devotee-details">
-                            <strong>{i + 1}. {devotee.devoteeName}</strong> (Age: {devotee.age}, Gender: {devotee.gender})
-                            <br />
-                            <span>Aadhar: {devotee.aadharNumber}</span>
-                          </div>
+                        {booking.devoteeNames.map((devotee, idx) => (
+                          <p key={idx}>
+                            {devotee.devoteeName}, {devotee.age}, {devotee.gender}, {devotee.aadharNumber}
+                          </p>
                         ))}
                       </td>
                     </tr>
                   ))}
                 </tbody>
-              </Table>
-            </div>
-          )}
+              </table>
+            ) : (
+              <p className="no-booking">❌ No Darshan bookings found.</p>
+            )}
 
-          {/* Pooja Bookings Table */}
-          {poojaBookings.length > 0 && (
-            <div className="booking-section animate__animated animate__fadeInRight">
-              <h3 className="section-title">🛕 Pooja Bookings</h3>
-              <Table striped bordered hover className="table-shadow">
+            {/* Pooja Bookings Table */}
+            <h2 className="section-title">🕉️ Pooja Bookings</h2>
+            {poojaBookings.length > 0 ? (
+              <table className="booking-table">
                 <thead>
                   <tr>
                     <th>Sr. No</th>
@@ -114,7 +98,7 @@ const MyBookings = () => {
                 </thead>
                 <tbody>
                   {poojaBookings.map((booking, index) => (
-                    <tr key={booking.bookingId}>
+                    <tr key={index}>
                       <td>{index + 1}</td>
                       <td>{booking.date}</td>
                       <td>{booking.slot}</td>
@@ -122,10 +106,12 @@ const MyBookings = () => {
                     </tr>
                   ))}
                 </tbody>
-              </Table>
-            </div>
-          )}
-        </Container>
+              </table>
+            ) : (
+              <p className="no-booking">❌ No Pooja bookings found.</p>
+            )}
+          </>
+        )}
       </div>
       <Footer />
     </>
