@@ -18,7 +18,7 @@ const Dashboard = () => {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8062/all-bookings', {
+      const response = await fetch('http://localhost:8060/booking/all-bookings', {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",

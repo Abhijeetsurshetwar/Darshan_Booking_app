@@ -25,34 +25,38 @@ const Donation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!amount || !reason || !donorName) {
+  
+    // Validation: Name should be at least 3 characters
+    if (donorName.trim().length < 3) {
+      alert("Donor name must be at least 3 characters long.");
+      return;
+    }
+  
+    if (!amount || !reason) {
       alert("Please fill all fields before donating.");
       return;
     }
-
+  
     const donationData = {
-      ammount: Number(amount), 
-      purpose: reason, 
-      user_name: username, 
+      ammount: Number(amount),
+      purpose: reason,
+      user_name: username,
     };
-    
-
+  
     try {
-      const response = await fetch("http://localhost:8062/donation/bookdonation", {
+      const response = await fetch("http://localhost:8060/donation/bookdonation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(donationData),
       });
-      
-
+  
       if (!response.ok) {
         throw new Error("Donation failed. Please try again.");
       }
-
+  
       console.log("✅ Donation successful:", await response.json());
       setSubmitted(true);
     } catch (error) {
@@ -60,6 +64,7 @@ const Donation = () => {
       alert(error.message || "An unexpected error occurred.");
     }
   };
+  
 
   return (
     <>
@@ -71,7 +76,7 @@ const Donation = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: `url('https://www.guruweshvarshani.org/wp-content/uploads/2023/09/north-indian-3d-temple-construction-6-e1695035810434.jpeg')`,
+          background: `url('https://wallpapers.com/images/featured/sai-baba-hd-5alhd9bw1pwln7ee.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -118,8 +123,8 @@ const Donation = () => {
                     borderRadius: "6px",
                     border: "1px solid #ccc",
                     fontSize: "16px",
-                  } }
-                 />
+                  }}
+                />
                 <input
                   type="number"
                   placeholder="Enter Donation Amount (₹)"

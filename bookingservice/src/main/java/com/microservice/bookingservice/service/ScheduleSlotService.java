@@ -35,16 +35,26 @@ public class ScheduleSlotService {
     @Autowired
     private SlotRepository slotRepository;
 
-    public Schedule createScheduleWithDates(Schedule schedule) {
-        if (schedule.getScheduleDates() != null) {
-            schedule.getScheduleDates().forEach(scheduleDate -> {
-                scheduleDate.setSchedule(schedule);
-                if (scheduleDate.getSlots() != null) {
-                    scheduleDate.getSlots().forEach(slot -> slot.setScheduleDate(scheduleDate));
+
+    
+    public Schedule addScheduleDates(int scheduleId, List<ScheduleDate> scheduleDates) {
+        // Fetch the existing Schedule
+        Schedule existingSchedule = scheduleRepository.findById(scheduleId)
+                .orElseThrow(() -> new RuntimeException("Schedule not found with id: " + scheduleId));
+
+        // Assign new ScheduleDates to the existing Schedule
+        for (ScheduleDate scheduleDate : scheduleDates) {
+            scheduleDate.setSchedule(existingSchedule);
+            if (scheduleDate.getSlots() != null) {
+                for (Slot slot : scheduleDate.getSlots()) {
+                    slot.setScheduleDate(scheduleDate);
                 }
-            });
+            }
+            existingSchedule.getScheduleDates().add(scheduleDate);
         }
-        return scheduleRepository.save(schedule);
+
+        // Save updated Schedule
+        return scheduleRepository.save(existingSchedule);
     }
 
     public List<Schedule> getAllSchedules() {
@@ -79,14 +89,15 @@ public class ScheduleSlotService {
             devoteeBooking = processSlotBook(date, slot, request);
         }
         catch (Exception e){
-            throw new RuntimeException("Booking Service is down ");
+        		e.printStackTrace();
+//            throw new RuntimeException("Booking Service is down ");
         }
         return getBookingById(devoteeBooking.getBookingId());
     }
 
     //To reduce the vacancy of slots for Darshan
     public void reduceVacancy(String date, String slot, Integer totalDevotee) {
-        ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date,1l);
+        ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date,2l);
         if (scheduleDate == null) {
             throw new RuntimeException("Schedule not found for date: " + date);
         }
@@ -107,7 +118,7 @@ public class ScheduleSlotService {
     
     //To reduce the vacancy for Poojabooking
     public void reducePoojaVacancy(String date,String slot,Integer totalDevotee) {
-    	ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date, 2l);
+    	ScheduleDate scheduleDate = scheduleDateRepository.findByDateAndSchedule_Id(date, 1l);
         if (scheduleDate == null) {
             throw new RuntimeException("Schedule not found for date: " + date);
         }
@@ -137,7 +148,8 @@ public class ScheduleSlotService {
     		devoteebooking = processPoojaSlotBook(date,slot,request);
     		
     	}catch(Exception e) {
-    		e.printStackTrace();	}
+    		e.printStackTrace();	
+    		}
     	
     	return getBookingById(devoteebooking.getBookingId());
     }
@@ -149,7 +161,7 @@ public class ScheduleSlotService {
     	devotee.setBookingId(createBookingId());
     	devotee.setSlot(slot);
     	devotee.setDate(date);
-    	
+    	devotee.setTotalDevotee(DevoteeBooking.getTotalDevotee());
         return devoteeBookingRepository.save(devotee);
     }
     

@@ -3,6 +3,7 @@ package com.microservice.bookingservice.controller;
 import com.microservice.bookingservice.entities.DevoteeBooking;
 import com.microservice.bookingservice.entities.DummyDevotee;
 import com.microservice.bookingservice.entities.Schedule;
+import com.microservice.bookingservice.entities.ScheduleDate;
 import com.microservice.bookingservice.service.ScheduleSlotService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +12,28 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ScheduleSlotController {
 
     @Autowired
     private ScheduleSlotService scheduleSlotService;
-
-    @PostMapping("/schedules/createScheduleWithDates")
-    public ResponseEntity<Schedule> createScheduleWithDates(@RequestBody Schedule schedule) {
-        System.out.println(schedule);
-        return ResponseEntity.ok(scheduleSlotService.createScheduleWithDates(schedule));
+    
+    
+    @PostMapping("/schedules/addScheduleDates")
+    public ResponseEntity<Schedule> addScheduleDates(
+            @RequestParam int scheduleId, 
+            @RequestBody List<ScheduleDate> scheduleDates) {
+        
+        return ResponseEntity.ok(scheduleSlotService.addScheduleDates(scheduleId, scheduleDates));
     }
 
-    @GetMapping("/schedules")
+
+    @GetMapping("/schedules/getschedules")
     public ResponseEntity<List<Schedule>> getAllSchedules() {
         return ResponseEntity.ok(scheduleSlotService.getAllSchedules());
     }
 
-    @PostMapping("/booking")
+    @PostMapping("/booking/darshanbooking")
     public ResponseEntity<DevoteeBooking> bookSlot(
             @RequestParam String date,
             @RequestParam String slot,
@@ -38,7 +42,7 @@ public class ScheduleSlotController {
 
     }
      
-    @GetMapping("/getbooking")
+    @GetMapping("/booking/getbooking")
     public ResponseEntity<List<DevoteeBooking>> getBookingbyUser_name(@RequestParam String username){
     	String s = username;
     	System.out.println(s);
@@ -46,7 +50,7 @@ public class ScheduleSlotController {
     }
     
   
-    @PostMapping("/poojabooking")
+    @PostMapping("/booking/poojabooking")
     public ResponseEntity<DevoteeBooking> bookPoojaSlot(
     		@RequestParam("date") String date,
     		@RequestParam("slot") String slot,
@@ -56,7 +60,7 @@ public class ScheduleSlotController {
     }
     
     
-    @GetMapping("all-bookings")
+    @GetMapping("/booking/all-bookings")
     public ResponseEntity<List<DevoteeBooking>> allBooking(){
     	return ResponseEntity.ok(scheduleSlotService.getBookings());
     }

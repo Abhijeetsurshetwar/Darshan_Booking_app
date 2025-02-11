@@ -1,0 +1,53 @@
+.bookings-container {
+    padding: 20px;
+    background-color: #FAF3E0; /* Light background color */
+    min-height: 100vh;
+  }
+  
+  .bookings-title {
+    color: #8B0000; /* Dark red color */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(251, 19, 19, 0.6);
+  }
+  
+  .section-title {
+    color: #8B0000; /* Dark red color */
+    margin-top: 30px;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+  
+  .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #FFF5C3; /* Light yellow background for the table */
+    border: 2px solid #FFD700; /* Golden border */
+  }
+  
+  .booking-table th,
+  .booking-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc; /* Light gray border for rows */
+  }
+  
+  .booking-table th {
+    background-color: #FFD700; /* Golden header */
+    color: #8B0000; /* Dark red text */
+  }
+  
+  .no-booking {
+    text-align: center;
+    color: #8B0000; /* Dark red color */
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  .loading-text {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #8B0000; /* Dark red color */
+  }

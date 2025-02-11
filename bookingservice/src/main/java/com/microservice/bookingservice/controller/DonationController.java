@@ -15,7 +15,6 @@ import com.microservice.bookingservice.entities.Donation;
 import com.microservice.bookingservice.service.DonationService;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/donation")
 public class DonationController {

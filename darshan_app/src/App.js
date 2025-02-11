@@ -17,15 +17,21 @@ import Donation from './components/Donation';
 import Events from './components/Events';
 import Accommodation from './components/Accomodation';
 import CreateSchedule from './components/AdminDashboard/pages/createSchedules';
+import MyBookings from './components/MyBooking';
+import Mainpage from './components/Mainpage';
+import Gallery from './components/Gallery';
+import UpdateProfile from './components/Updateprofile';
 
 function App() {
   return (
     
       <Routes>
         {/* User Routes */}
+        <Route path="/mainpage" element={<Mainpage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/mybookings" element={<MyBookings />} />
 
         {/* Routes where Navbar should appear */}
         <Route path="/book-darshan" element={<BookDarshan />} />
@@ -34,14 +40,16 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/support" element={<Support />} />
         <Route path="/accomodation" element={<Accommodation />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/updateprofile" element={<UpdateProfile />} />
 
 
         {/* Redirect to login by default */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/mainpage" />} />
 
         {/* Admin Routes */}
         <Route path="/admin/*" element={<AdminLayout />} />
-        <Route path="/createSchedules" element={<CreateSchedule/>}/>
+        
       </Routes>
     
   );
@@ -61,6 +69,7 @@ const AdminLayout = () => {
             <Route path="booking" element={<Booking />} />
             <Route path="donations" element={<Donations />} />
             <Route path="setting" element={<Setting />} />
+            <Route path="createSchedules" element={<CreateSchedule/>}/>
             <Route path="support" element={<Support />} />
           </Routes>
         </div>

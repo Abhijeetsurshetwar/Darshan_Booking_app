@@ -1,18 +1,3 @@
-// import Footer from "../Footer";
-// import Frontpage from "../Frontpage";
-// import Navbar from "../Navbar";
-
-
-// export default function HomePage(){
-
-//     return (
-//         <div className="container-fluid">
-//             <Navbar/>
-//             <Frontpage/>
-//             <Footer/>
-//         </div>
-//     );
-// }
 import React, { useEffect } from "react"; 
 import { useSelector } from "react-redux"; 
 import Footer from "../Footer";

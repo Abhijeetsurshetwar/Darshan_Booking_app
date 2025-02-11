@@ -22,6 +22,7 @@ public class SecurityConfig {
             .httpBasic(httpBasic ->{}); // Enable Basic Auth
         return http.build();
     }
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

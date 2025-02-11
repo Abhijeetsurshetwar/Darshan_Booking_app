@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserCircle2 } from 'lucide-react';
@@ -26,7 +27,7 @@ export default function LoginForm() {
         };
 
         try {
-            const response = await fetch('http://localhost:8061/authenticate/login', reqInfo);
+            const response = await fetch('http://localhost:8060/authenticate/login', reqInfo);
 
             if (!response.ok) {
                 throw new Error('Invalid credentials or server error.');
@@ -80,7 +81,7 @@ export default function LoginForm() {
                             className="mb-2"
                             style={{ width: '4rem', height: '4rem', color: '#d97706' }}
                         />
-                         <h2 className="h4 text-dark fw-bold">Welcome to Sai Darshan</h2>
+                        <h2 className="h4 text-dark fw-bold">Welcome Back</h2>
                         <p className="text-muted">Sign in to book your darshan</p>
                     </div>
 
@@ -129,6 +130,12 @@ export default function LoginForm() {
                             Don't have an account?{' '}
                             <Link to="/register" className="text-warning fw-semibold">
                                 Register here
+                            </Link>
+                        </p>
+                        <p className="text-muted small">
+                            {' '}
+                            <Link to="/mainpage" className="text-warning fw-semibold">
+                                Back To Home
                             </Link>
                         </p>
                     </div>

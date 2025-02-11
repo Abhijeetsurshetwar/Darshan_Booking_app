@@ -19,6 +19,9 @@ public class Schedule {
 	@OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ScheduleDate> scheduleDates = new ArrayList<>();
+	
+	
+	
     
     public String getName() {
 		return name;
