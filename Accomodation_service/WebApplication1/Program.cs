@@ -1,3 +1,5 @@
+using Steeltoe.Discovery.Client;
+
 namespace WebApplication1
 {
     public class Program
@@ -9,17 +11,19 @@ namespace WebApplication1
             // Add services to the container.
             builder.Services.AddControllers();
 
+            builder.Services.AddDiscoveryClient(builder.Configuration);
+
             // Add CORS Policy
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowReactApp",
-                    policy =>
-                    {
-                        policy.WithOrigins("http://localhost:3000") // React frontend URL
-                              .AllowAnyMethod()
-                              .AllowAnyHeader();
-                    });
-            });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowReactApp",
+            //        policy =>
+            //        {
+            //            policy.WithOrigins("http://localhost:3006") // React frontend URL
+            //                  .AllowAnyMethod()
+            //                  .AllowAnyHeader();
+            //        });
+            //});
 
             // Swagger configuration
             builder.Services.AddEndpointsApiExplorer();
@@ -34,7 +38,10 @@ namespace WebApplication1
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
+            //app.UseDiscoveryClient();
+
 
             // Use the CORS policy
             app.UseCors("AllowReactApp");

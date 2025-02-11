@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/donation/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/donation/**").permitAll()//.hasRole("USER")
                         .requestMatchers(HttpMethod.POST, "/booking/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/schedules/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/schedules/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex

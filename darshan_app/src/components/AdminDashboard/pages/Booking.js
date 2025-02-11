@@ -13,7 +13,7 @@ const Booking = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get('http://localhost:8062/all-bookings', {
+        const response = await axios.get('http://localhost:8060/booking/all-bookings', {
           method: 'GET',
           headers: {
             "Content-Type": "application/json",

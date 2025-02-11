@@ -14,7 +14,7 @@ const Donations = () => {
   useEffect(() => {
     // Fetch donation data from the API
     axios
-      .get('http://localhost:8062/donation/alldonation', {
+      .get('http://localhost:8060/donation/alldonation', {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${Token}`

@@ -20,7 +20,7 @@ const Setting = () => {
   // Function to fetch accommodations
   const fetchAccommodations = async () => {
     try {
-      const response = await axios.get("https://localhost:8065/Accomodation/getAccomodation");
+      const response = await axios.get("http://localhost:8060/Accomodation/getAccomodation");
       console.log("Fetched Data:", response.data); // Debugging log
       setAccommodations(response.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const Setting = () => {
       ...formData,
     };
 
-    fetch("https://localhost:8065/Accomodation/InsertAccomodation", {
+    fetch("http://localhost:8060/Accomodation/InsertAccomodation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Setting = () => {
   const handleDelete = (aid) => {
     console.log("Deleting accommodation with AID:", aid); // Debugging log
 
-    fetch(`https://localhost:8065/Accomodation/DeleteAccomodation/${aid}`, {
+    fetch(`http://localhost:8060/Accomodation/DeleteAccomodation/${aid}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
